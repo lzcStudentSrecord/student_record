@@ -3,4 +3,14 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lzlz.student.record.dao.ReplyDAO">
+	<insert id="insertByReply" parameterType="Reply">
+		INSERT reply(pid,rcontent,rauthor,rdate) value(
+		#{reply.pid},#{reply.rcontent},
+		#{reply.rauthor},now()
+		);
+	</insert>
+	<select id="selectByPid" parameterType="java.lang.Long"
+		resultType="Reply">
+		SELECT * FROM reply WHERE pid = #{pid} ORDER BY rid;
+	</select>
 </mapper>

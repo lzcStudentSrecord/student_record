@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lzlz.student.record.entiy.GeneralCertificate;
 import com.lzlz.student.record.entiy.ProfessCertificate;
 import com.lzlz.student.record.service.ProfessCertificateService;
 

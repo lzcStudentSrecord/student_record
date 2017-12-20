@@ -9,7 +9,6 @@ public class Reply {
 
 	public Reply() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Reply(long rid, long pid, String rcontent, long rauthor, String rdate) {
