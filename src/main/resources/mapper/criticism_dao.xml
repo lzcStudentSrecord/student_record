@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzlz.student.record.dao.CriticismDAO">
+	<insert id="insertByCriticism" parameterType="Criticism">
+		INSERT
+		criticism(sno,ctime,creason,ctype,cpunishment)
+		value(#{criticism.sno},#{criticism.ctime},
+		#{criticism.creason},#{criticism.ctype},
+		#{criticism.cpunishment});
+	</insert>
+	<insert id="insertByList" parameterType="java.util.List">
+		<selectKey resultType="java.lang.Integer" keyProperty="id"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT criticism(sno,ctime,creason,ctype,cpunishment) value
+		<foreach collection="list" item="criticism" open="(" close=")"
+			separator=",">
+			#{criticism.sno},#{criticism.ctime},
+			#{criticism.creason},#{criticism.ctype},
+			#{criticism.cpunishment}
+		</foreach>
+	</insert>
+	<select id="selectByTno" parameterType="java.lang.Long"
+		resultType="Credit">
+		SELECT * FROM criticism WHERE sno=(
+		SELECT sno FROM student WHERE tfrom (
+		SELECT tfrom FROM teacher WHERE tno=#{tno}
+		)
+		);
+	</select>
+	<update id="updateByCriticism" parameterType="Criticism">
+		UPDATE criticism SET
+		sno=#{criticism.sno},ctime=#{criticism.ctime},
+		creason=#{criticism.creason},ctype=#{criticism.ctype},cpunishment=#{criticism.cpunishment}
+		WHERE crid=#{criticism.crid}
+	</update>
+	<delete id="deleteByCrid" parameterType="Criticism">
+		DELETE FROM criticism
+		WHERE crid=#{crid}
+	</delete>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzlz.student.record.dao.ActivityDAO">
+	<insert id="insertByActivity" parameterType="Activity">
+		INSERT
+		activity(proposer,aname,acontent,aaffect,astate)
+		value(
+		#{activity.proposer},#{activity.aname},
+		#{activity.acontent},#{activity.aaffect},
+		#{activity.astate}
+		);
+	</insert>
+	<select id="selectByAid" parameterType="java.lang.Long" resultType="Activity">
+		SELECT * FROM activity
+		WHERE aid = #{aid}
+	</select>
+	<!-- 给老师们展示用的方法 -->
+	<select id="selectAllByNoPass" resultType="Activity">
+		SELECT * FROM activity
+		WHERE astate = '未通过';
+	</select>
+	<!-- 给学生们展示用的方法 -->
+	<select id="selectAllByProposer" resultType="Activity">
+		SELECT * FROM
+		activity WHERE proposer = #{sno};
+	</select>
+	<update id="updateByActivity" parameterType="Activity">
+		UPDATE activity set
+		aname=#{activity.aname},
+		acontent=#{activity.acontent},
+		aaffect=#{activity.aaffect},astate=#{activity.astate}
+		WHERE
+		aid=#{activity.aid} and #{activity.astate}='未通过';
+	</update>
+
+	<delete id="deleteByAid" parameterType="java.lang.Long">
+		DELETE FROM activity
+		WHERE aid=#{aid} and astate='未通过';
+	</delete>
+</mapper>

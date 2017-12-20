@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzlz.student.record.dao.ClassRoomDAO">
+	<insert id="insertByClassRoom" parameterType="ClassRoom">
+		INSERT
+		classroom(craddress) value(#{classRoom.craddress});
+	</insert>
+	<select id="selectAll" resultType="ClassRoom">
+		SELECT * FROM classroom;
+	</select>
+	<update id="updateByClassRoom" parameterType="ClassRoom">
+		UPDATE classroom set
+		craddress=#{classRoom.craddress} WHERE
+		crno=#{classRoom.crno};
+	</update>
+</mapper>

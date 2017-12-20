@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzlz.student.record.dao._ClassDAO">
+
+  	<resultMap type="_Class" id="_ClassMap">
+        <!--
+            column:数据库中表的字段
+            property：数据库中表所有映射的实体类javaBean中的属性名
+         -->
+        <result column="c_no" property="c_no"/>
+        <result column="c_name" property="c_name"/>
+    </resultMap>
+
+	<insert id="insertBy_Class" parameterType="_Class">
+		INSERT _class
+		value(
+		#{_class.c_no},#{_class.c_name}
+		);
+	</insert>
+	<select id="selectByC_no" resultMap="_ClassMap" parameterType="java.lang.Long">
+		SELECT * FROM _class WHERE c_no = #{c_no};
+	</select>
+	<select id="selectAll" resultMap="_ClassMap">
+		SELECT * FROM _class;
+	</select>
+	
+	<update id="updateBy_Class" parameterType="_Class">
+		UPDATE _class set c_name = #{_class.c_name};
+	</update>
+	
+	<delete id="deleteByC_no" parameterType="java.lang.Long">
+		DELETE FROM _class WHERE c_no = #{c_no};
+	</delete>
+</mapper>

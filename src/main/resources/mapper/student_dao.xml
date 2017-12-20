@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzlz.student.record.dao.StudentDAO">
+
+	<insert id="insertByList" parameterType="java.util.List">
+		<selectKey resultType="java.lang.Integer" keyProperty="id"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT student VALUE
+		<foreach collection="list" item="student" open="(" close=")"
+			separator=",">
+			#{student.sno},#{student.sname},#{student.sgender},
+			#{student.sgrade},#{student.sclass},
+			#{student.sdept},#{student.saddress},#{student.sphone},
+			#{student.sparent},#{student.sparent_phone},
+			#{student.sjob},#{student.sfrom},#{student.sstate}
+		</foreach>
+	</insert>
+	
+	<insert id="insertByStudent" parameterType="Student">
+		INSERT student VALUE(#{student.sno},#{student.sname},#{student.sgender},
+			#{student.sgrade},#{student.sclass},
+			#{student.sdept},#{student.saddress},#{student.sphone},
+			#{student.sparent},#{student.sparent_phone},
+			#{student.sjob},#{student.sfrom},#{student.sstate});
+	</insert>
+	
+	<select id="getAllId" resultType="java.lang.Long">
+		SELECT sno FROM student;
+	</select>
+	
+	<select id="getStudentBySno" parameterType="java.lang.Long"
+		resultType="Student">
+		SELECT * FROM student WHERE sno = ${sno};
+	</select>
+	
+	<select id="selectAll" resultType="Student">
+		SELECT * FROM student;
+	</select>
+	
+	<update id="updateByStudent" parameterType="Student">
+		UPDATE student SET
+		sname=#{student.sname},sgender=#{student.sgender},
+		sgrade=#{student.sgrade},sclass=#{student.sclass},
+		sdept=#{student.sdept},saddress=#{student.saddress},
+		sphone=#{student.sphone},sparent=#{student.sparent},
+		sparent_phone=#{student.sparent_phone},sjob=#{student.sjob},
+		tfrom=#{student.tfrom},sstate=#{student.sstate}
+		WHERE
+		sno=#{student.sno};
+	</update>
+	
+	<delete id="deleteBySno" parameterType="java.lang.Long">
+		DELETE FROM student WHERE
+		sno = ${sno};
+	</delete>
+
+</mapper>

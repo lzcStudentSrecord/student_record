@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzlz.student.record.dao.AdjustLessonDAO">
+	<insert id="insertByAdjustLesson" parameterType="AdjustLesson">
+		INSERT
+		adjustlesson value(
+		#{adjustLesson.tno},#{adjustLesson.reason},
+		#{adjustLesson.course},#{adjustLesson.oldtime},
+		#{adjustLesson.oldaddress},#{adjustLesson.newtime},
+		#{adjustLesson.newaddress}
+		);
+	</insert>
+	<select id="selectAllBySno" resultType="AdjustLesson">
+		SELECT * FROM adjustlesson WHERE #{sno}=(SELECT sno From Student WHERE tfrom=(
+				SELECT tfrom FROM teacher WHERE teacher.tno=adjustlesson.tno
+			)
+		);
+	</select>
+</mapper>
