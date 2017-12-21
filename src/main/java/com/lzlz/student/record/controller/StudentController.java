@@ -68,8 +68,8 @@ public class StudentController {
 				"+8617862733349", "张进强", "+8617865058755", "无", 1601, "在校"));
 	}
 	
-	@RequestMapping(value = "/selectAll", method = RequestMethod.GET)
-	public @ResponseBody List<Student> selectAll(){
-		return studentService.selectAll();
+	@RequestMapping(value = "/selectAllByTno", method = RequestMethod.GET)
+	public @ResponseBody List<Student> selectAllByTno(){
+		return studentService.selectAllByTno(9901);
 	}
 }

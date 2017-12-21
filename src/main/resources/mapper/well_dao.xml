@@ -2,5 +2,35 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
 <mapper namespace="com.lzlz.student.record.dao.WellDAO">
+	<insert id="insertByWell" parameterType="Well">
+		INSERT
+		well(sno,getTime,wtype,wname) value(
+		#{well.sno},#{well.getTime},#{well.wtype},#{well.wname}
+		);
+	</insert>
+	<insert id="insertByList">
+		<selectKey resultType="java.lang.Integer" keyProperty="id"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT well(sno,getTime,wtype,wname) value
+		<foreach collection="list" item="well" open="(" close=")"
+			separator=",">
+			#{well.sno},#{well.getTime},#{well.wtype},#{well.wname}
+		</foreach>
+	</insert>
+	<select id="selectBySno" resultType="Well" parameterType="java.lang.Long">
+		SELECT
+		* FROM well WHERE sno=#{sno}
+	</select>
+	<select id="selectByTno" resultType="Well" parameterType="java.lang.Long">
+		SELECT
+		* FROM well WHERE sno=(
+		SELECT sno FROM student WHERE tfrom=(
+		SELECT tfrom FROM teacher WHERE tno=#{tno}
+		)
+		);
+	</select>
 </mapper>

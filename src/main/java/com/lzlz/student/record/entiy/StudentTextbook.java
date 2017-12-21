@@ -1,22 +1,25 @@
 package com.lzlz.student.record.entiy;
 
 public class StudentTextbook {
+	private long stno;
 	private long sno;
 	private String tbname;
 	private int num;
 	private float price;
+	private String state;
 
 	public StudentTextbook() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public StudentTextbook(long sno, String tbname, int num, float price) {
+	public StudentTextbook(long stno, long sno, String tbname, int num, float price, String state) {
 		super();
+		this.stno = stno;
 		this.sno = sno;
 		this.tbname = tbname;
 		this.num = num;
 		this.price = price;
+		this.state = state;
 	}
 
 	public long getSno() {
@@ -51,9 +54,26 @@ public class StudentTextbook {
 		this.price = price;
 	}
 
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public long getStno() {
+		return stno;
+	}
+
+	public void setStno(long stno) {
+		this.stno = stno;
+	}
+
 	@Override
 	public String toString() {
-		return "StudentTextbook [sno=" + sno + ", tbname=" + tbname + ", num=" + num + ", price=" + price + "]";
+		return "StudentTextbook [stno=" + stno + ", sno=" + sno + ", tbname=" + tbname + ", num=" + num + ", price="
+				+ price + ", state=" + state + "]";
 	}
 
 }

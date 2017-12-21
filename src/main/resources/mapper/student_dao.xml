@@ -37,8 +37,10 @@
 		SELECT * FROM student WHERE sno = ${sno};
 	</select>
 	
-	<select id="selectAll" resultType="Student">
-		SELECT * FROM student;
+	<select id="selectAllByTno" resultType="Student">
+		SELECT * FROM student WHERE tfrom=(
+			SELECT tfrom FROM teacher WHERE tno=#{tno}
+		);
 	</select>
 	
 	<update id="updateByStudent" parameterType="Student">

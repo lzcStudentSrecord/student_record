@@ -12,7 +12,7 @@ public interface StudentService {
 
 	public List<Long> getAllId();
 	
-	public List<Student> selectAll();
+	public List<Student> selectAllByTno(long tno);
 	
 	public int updateByStudent(Student student);
 	

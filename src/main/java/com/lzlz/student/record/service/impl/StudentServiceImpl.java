@@ -49,9 +49,9 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public List<Student> selectAll() {
+	public List<Student> selectAllByTno(long tno) {
 		// TODO Auto-generated method stub
-		return studentDAO.selectAll();
+		return studentDAO.selectAllByTno(tno);
 	}
 
 }

@@ -9,7 +9,6 @@ public class Well {
 
 	public Well() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Well(long weid, long sno, String getTime, String wtype, String wname) {

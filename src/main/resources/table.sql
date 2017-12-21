@@ -88,18 +88,15 @@ aaffect varchar(255) not null,-- 活动作用
 astate enum('未通过','已通过') not null-- 活动申请状态
 );
 
--- 教材
-create table textbook(
-tbname varchar(50) not null,-- 教材名称
-tbprice float(5,2) not null-- 教材价格
-);
 
 -- 学生教材
 create table student_textbook(
+stno bigint primary key auto_increment,-- 教材选择编号
 sno bigint not null,-- 学号
 tbname varchar(50) not null,-- 教材名称
 num tinyint unsigned not null,-- 数量
-price float(5,2) not null-- 总价
+price float(5,2) not null,-- 总价
+state enum('未确认','已确认') default '未确认'-- 确认状态
 );
 -- 调课
 create table adjustlesson(
