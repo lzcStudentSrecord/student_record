@@ -70,4 +70,10 @@ public class Activity {
 		this.astate = astate;
 	}
 
+	@Override
+	public String toString() {
+		return "Activity [aid=" + aid + ", proposer=" + proposer + ", aname=" + aname + ", acontent=" + acontent
+				+ ", aaffect=" + aaffect + ", astate=" + astate + "]";
+	}
+
 }

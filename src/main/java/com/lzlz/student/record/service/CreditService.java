@@ -2,6 +2,7 @@ package com.lzlz.student.record.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import com.lzlz.student.record.entiy.Credit;
@@ -17,4 +18,6 @@ public interface CreditService {
 	public int deleteByCredId(long credId);
 
 	public List<Credit> selectByTno(long tno);
+	
+	public Credit selectByCredId(long credId);
 }

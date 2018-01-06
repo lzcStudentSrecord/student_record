@@ -1,5 +1,8 @@
 package com.lzlz.student.record.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +37,24 @@ public class TeacherController {
 		return teacherService.updateByTeacher(new Teacher(12306L, "乐正绫", "女", "123456", 1601L));
 	}
 
-	@RequestMapping(value="/deleteByTno",method = RequestMethod.GET)
-	public @ResponseBody int deleteByTno(){
+	@RequestMapping(value = "/deleteByTno", method = RequestMethod.GET)
+	public @ResponseBody int deleteByTno() {
 		return teacherService.deleteByTno(12306L);
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(HttpSession session, HttpServletRequest request, String username, String password) {
+		Teacher teacher = teacherService.selectByTno(Long.parseLong(username));
+		if (teacher == null) {
+			request.setAttribute("ret", 1);
+			return "retprocess";
+		}
+		if (!teacher.getTpassword().equals(password)) {
+			request.setAttribute("ret", 2);
+			return "retprocess";
+		}
+		session.setAttribute("teacher", teacher);
+		request.setAttribute("ret", 3);
+		return "retprocess";
 	}
 }

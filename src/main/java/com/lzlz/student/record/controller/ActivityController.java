@@ -2,12 +2,17 @@ package com.lzlz.student.record.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lzlz.student.record.entiy.Activity;
+import com.lzlz.student.record.entiy.Student;
 import com.lzlz.student.record.service.ActivityService;
 
 @Controller
@@ -20,15 +25,23 @@ public class ActivityController {
 		this.activityService = activityService;
 	}
 
-	@RequestMapping("/insertByActivity")
-	public @ResponseBody int insertByActivity() {
-		return activityService.insertByActivity(new Activity(0, 201615230142L, "洛天依全息演唱会", "举办演唱会", "天依殿下我爱你", "未通过"));
+	@RequestMapping(value = "/insertByStudent", method = RequestMethod.POST)
+	public String insertByActivity(Activity activity, HttpServletRequest request, HttpSession session) {
+		activity.setProposer(((Student) session.getAttribute("student")).getSno());
+		activity.setAstate("未通过");
+		int ret = activityService.insertByActivity(activity);
+		if (ret != 0)
+			request.setAttribute("ret", 7);
+		else
+			request.setAttribute("ret", 8);
+		return "retprocess.jsp";
 	}
 
 	@RequestMapping("/selectByAid")
-	public @ResponseBody Activity selectByAid(){
+	public @ResponseBody Activity selectByAid() {
 		return activityService.selectByAid(2);
 	}
+
 	@RequestMapping("/selectAllByNoPass")
 	public @ResponseBody List<Activity> selectAllByNoPass() {
 		return activityService.selectAllByNoPass();
@@ -39,9 +52,15 @@ public class ActivityController {
 		return activityService.selectAllByProposer(201615230142L);
 	}
 
-	@RequestMapping("/updateByActivity")
-	public @ResponseBody int updateByActivity() {
-		return activityService.updateByActivity(new Activity(1, 201615230142L, "洛天依全息演唱会", "举办演唱会", "天依殿下我爱你", "未通过"));
+	@RequestMapping("/updateByTeacher")
+	public String updateByActivity(Activity activity, HttpServletRequest request) {
+		activity.setAstate("已通过");
+		int ret = activityService.updateByActivity(activity);
+		if (ret != 0)
+			request.setAttribute("ret", 4);
+		else
+			request.setAttribute("ret", 5);
+		return "retprocess";
 	}
 
 	@RequestMapping("/deleteByAid")

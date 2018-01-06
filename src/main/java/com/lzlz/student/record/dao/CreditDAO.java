@@ -43,4 +43,12 @@ public interface CreditDAO {
 	 * @return 数据集合
 	 */
 	public List<Credit> selectByTno(@Param("Tno") long tno);
+	/**
+	 * 通过学分编号查询一条数据
+	 * 
+	 * @param credId
+	 *           学分编号
+	 * @return 删除的个数
+	 */
+	public Credit selectByCredId(@Param("credId") long credId);
 }

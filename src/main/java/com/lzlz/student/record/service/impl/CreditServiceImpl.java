@@ -43,4 +43,9 @@ public class CreditServiceImpl implements CreditService {
 		return creditDAO.selectByTno(tno);
 	}
 
+	@Override
+	public Credit selectByCredId(long credId) {
+		return creditDAO.selectByCredId(credId);
+	}
+
 }

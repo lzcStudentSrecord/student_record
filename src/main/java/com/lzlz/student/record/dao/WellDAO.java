@@ -44,4 +44,13 @@ public interface WellDAO {
 	 * @return 数据集合
 	 */
 	public List<Well> selectByTno(@Param("tno") long tno);
+
+	/**
+	 * 通过编号删除数据
+	 * 
+	 * @param weid
+	 *            编号
+	 * @return
+	 */
+	public int deleteByWeid(@Param("weid") long weid);
 }

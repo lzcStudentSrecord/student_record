@@ -10,7 +10,7 @@ public class Student {
 	private String saddress;
 	private String sphone;
 	private String sparent;
-	private String sparent_phone;
+	private String sparentPhone;
 	private String sjob;
 	private long tfrom;
 	private String sstate;
@@ -31,7 +31,7 @@ public class Student {
 		this.saddress = saddress;
 		this.sphone = sphone;
 		this.sparent = sparent;
-		this.sparent_phone = sparent_phone;
+		this.sparentPhone = sparent_phone;
 		this.sjob = sjob;
 		this.tfrom = tfrom;
 		this.sstate = sstate;
@@ -93,12 +93,12 @@ public class Student {
 		this.sparent = sparent;
 	}
 
-	public String getSparent_phone() {
-		return sparent_phone;
+	public String getSparentPhone() {
+		return sparentPhone;
 	}
 
-	public void setSparent_phone(String sparent_phone) {
-		this.sparent_phone = sparent_phone;
+	public void setSparentPhone(String sparent_phone) {
+		this.sparentPhone = sparent_phone;
 	}
 
 	public String getSjob() {
@@ -152,7 +152,7 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [sno=" + sno + ", sgrade=" + sgrade + ", sclass=" + sclass + ", sdept=" + sdept + ", saddress="
-				+ saddress + ", sphone=" + sphone + ", sparent=" + sparent + ", sparent_phone=" + sparent_phone
+				+ saddress + ", sphone=" + sphone + ", sparent=" + sparent + ", sparentPhone=" + sparentPhone
 				+ ", sjob=" + sjob + ", sfrom=" + tfrom + ", sstate=" + sstate + "]";
 	}
 

@@ -3,12 +3,17 @@ package com.lzlz.student.record.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lzlz.student.record.entiy.ProfessCertificate;
+import com.lzlz.student.record.entiy.Student;
 import com.lzlz.student.record.service.ProfessCertificateService;
 
 @Controller
@@ -21,23 +26,36 @@ public class ProfessCertificateController {
 		this.professCertificateService = professCertificateService;
 	}
 
-	@RequestMapping("/insertByProfessCertificate")
-	public @ResponseBody int insertByProfessCertificate() {
-		return professCertificateService
-				.insertByProfessCertificate(new ProfessCertificate(0, 201615230142L, "架构师", "2017-12-20","二次元大使馆","未确认"));
+	@RequestMapping(value = "/insertByStudent", method = RequestMethod.POST)
+	public String insertByProfessCertificate(ProfessCertificate professCertificate, HttpServletRequest request,
+			HttpSession session) {
+		professCertificate.setPcstate("未确认");
+		professCertificate.setSno(((Student) session.getAttribute("student")).getSno());
+		int ret = professCertificateService.insertByProfessCertificate(professCertificate);
+		if (ret != 0)
+			request.setAttribute("ret", 5);
+		else
+			request.setAttribute("ret", 6);
+		return "retprocess";
 	}
 
 	@RequestMapping("/insertByList")
 	public @ResponseBody int insertByList() {
 		List<ProfessCertificate> list = new ArrayList<>();
-		list.add(new ProfessCertificate(0, 201615230142L, "架构师", "2017-12-20","二次元大使馆","未确认"));
+		list.add(new ProfessCertificate(0, 201615230142L, "架构师", "2017-12-20", "二次元大使馆", "未确认"));
 		return professCertificateService.insertByList(list);
 	}
 
-	@RequestMapping("/updateByProfessCertificate")
-	public @ResponseBody int updateByProfessCertificate() {
-		return professCertificateService
-				.updateByProfessCertificate(new ProfessCertificate(2, 201615230142L, "软件工程师", "2017-12-20","二次元大使馆","未确认"));
+	@RequestMapping(value = "/updateByTeacher", method = RequestMethod.POST)
+	public String updateByProfessCertificate(ProfessCertificate professCertificate, HttpServletRequest request,
+			HttpSession session) {
+		professCertificate.setPcstate("已确认");
+		int ret = professCertificateService.updateByProfessCertificate(professCertificate);
+		if (ret != 0)
+			request.setAttribute("ret", 4);
+		else
+			request.setAttribute("ret", 5);
+		return "retprocess";
 	}
 
 	@RequestMapping("/deleteByPcid")

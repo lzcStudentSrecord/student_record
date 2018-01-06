@@ -1,17 +1,19 @@
+create database student_manager;
+use student_manager;
 -- 学生表
 create table student(
 sno bigint primary key, -- 学号
 sname varchar(50) not null,-- 学生姓名
-sgender enum('男','女') default '男',-- 
+sgender enum('男','女') default '男',-- 性别
 sgrade int not null, -- 年级
 sclass tinyint unsigned not null,-- 班级
 sdept varchar(20) not null,-- 专业
 saddress varchar(255) not null,-- 家庭住址
 sphone varchar(20),-- 联系方式
 sparent varchar(20),-- 父/母 名字
-sparent_phone varchar(20),-- 父/母 联系方式
+sparentPhone varchar(20),-- 父/母 联系方式
 sjob varchar(255),-- 任职情况
-tfrom bigint not null,-- 所属班级
+tfrom bigint not null,-- 所属班级编号
 sstate enum('在校','休学','入伍','退学') default '在校'-- 学生状态
 );
 -- 班级
@@ -116,6 +118,7 @@ reason varchar(255) not null,-- 申请原因
 craddress varchar(100) not null,-- 教室地址
 startTime datetime not null,-- 使用开始时间
 endTime datetime not null-- 使用结束时间
+acstate enum('未通过','已通过') not null--教室申请状态
 );
 
 -- 主题帖

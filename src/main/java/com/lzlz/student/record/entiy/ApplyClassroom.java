@@ -6,18 +6,21 @@ public class ApplyClassroom {
 	private String craddress;
 	private String startTime;
 	private String endTime;
+	private String acstate;
 
 	public ApplyClassroom() {
 		super();
 	}
 
-	public ApplyClassroom(long proposer, String reason, String craddress, String startTime, String endTime) {
+	public ApplyClassroom(long proposer, String reason, String craddress, String startTime, String endTime,
+			String acstate) {
 		super();
 		this.proposer = proposer;
 		this.reason = reason;
 		this.craddress = craddress;
 		this.startTime = startTime;
 		this.endTime = endTime;
+		this.acstate = acstate;
 	}
 
 	public long getProposer() {
@@ -60,10 +63,18 @@ public class ApplyClassroom {
 		this.endTime = endTime;
 	}
 
+	public String getAcstate() {
+		return acstate;
+	}
+
+	public void setAcstate(String acstate) {
+		this.acstate = acstate;
+	}
+
 	@Override
 	public String toString() {
 		return "ApplyClassroom [proposer=" + proposer + ", reason=" + reason + ", craddress=" + craddress
-				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
+				+ ", startTime=" + startTime + ", endTime=" + endTime + ", acstate=" + acstate + "]";
 	}
-	
+
 }

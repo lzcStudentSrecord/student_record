@@ -21,4 +21,10 @@ public interface AdjustLessonDAO {
 	 * @return 返回所有数据集合
 	 */
 	public List<AdjustLesson> selectAllBySno(@Param("sno") long sno);
+	/**
+	 * 查询当天所有的调课信息
+	 * @param first limit的第一个值
+	 * @return
+	 */
+	public List<AdjustLesson> selectAllByTodayWithFenYe(@Param("first")int first);
 }

@@ -4,13 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lzlz.student.record.dao.ApplyClassroomDAO">
 	<select id="selectByToday" resultType="ApplyClassroom">
-		SELECT * FROM applyclassroom WHERE left(startTime,10) = curdate();
+		SELECT * FROM
+		applyclassroom WHERE left(startTime,10) = curdate() and acstate='已通过';
 	</select>
 	<insert id="insertByApplyClassroom" parameterType="ApplyClassroom">
-		INSERT applyclassroom value(
+		INSERT
+		applyclassroom value(
 		#{applyClassroom.proposer},#{applyClassroom.reason},
 		#{applyClassroom.craddress},#{applyClassroom.startTime},
-		#{applyClassroom.endTime}
+		#{applyClassroom.endTime},#{applyClassroom.acstate}
 		);
 	</insert>
 </mapper>

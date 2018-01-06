@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 <mapper namespace="com.lzlz.student.record.dao.CreditDAO">
 	<insert id="insertByCredit" parameterType="Credit">
 		INSERT
@@ -10,30 +10,36 @@
 		value(#{credit.sno},#{credit.cname},#{credit.ctype},#{credit.cscore});
 	</insert>
 	<insert id="insertByList" parameterType="java.util.List">
-			<selectKey resultType="java.lang.Integer" keyProperty="id"
-				order="AFTER">
-				SELECT LAST_INSERT_ID()
-			</selectKey>
-			INSERT credit(sno,cname,ctype,cscore) value
-			<foreach collection="list" item="credit" open="(" close=")"
-				separator=",">
-				#{credit.sno},#{credit.cname},#{credit.ctype},#{credit.cscore}
-			</foreach>
+		<selectKey resultType="java.lang.Integer" keyProperty="id"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT credit(sno,cname,ctype,cscore) value
+		<foreach collection="list" item="credit" open="(" close=")"
+			separator=",">
+			#{credit.sno},#{credit.cname},#{credit.ctype},#{credit.cscore}
+		</foreach>
 	</insert>
 	<select id="selectByTno" parameterType="java.lang.Long"
 		resultType="Credit">
 		SELECT * FROM credit WHERE sno=(
-			SELECT sno FROM student WHERE tfrom (
-				SELECT tfrom FROM teacher WHERE tno=#{tno}
-			)
+		SELECT sno FROM student
+		WHERE tfrom=#{tno}
 		);
 	</select>
+	<select id="selectByCredId" parameterType="java.lang.Long"
+		resultType="Credit">
+		SELECT * FROM credit WHERE credId=#{credId}
+	</select>
 	<update id="updateByCredit" parameterType="Credit">
-		UPDATE credit SET sno=#{credit.sno},cname=#{credit.cname},
+		UPDATE credit SET
+		sno=#{credit.sno},cname=#{credit.cname},
 		ctype=#{credit.ctype},cscore=#{credit.cscore}
-		WHERE credId=#{credit.credId}
+		WHERE
+		credId=#{credit.credId}
 	</update>
 	<delete id="deleteByCredId" parameterType="Credit">
-		DELETE FROM credit WHERE credId=#{credId}
+		DELETE FROM credit
+		WHERE credId=#{credId}
 	</delete>
 </mapper>
