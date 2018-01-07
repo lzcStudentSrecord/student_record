@@ -151,8 +151,8 @@ public class ExcelProcess {
 	 * @param type
 	 * @return
 	 */
-	public static String wellProcess(WellService wellService, InputStream is, boolean type) {
-		String title = "学号时间名称";
+	public static String wellProcess(WellService wellService, InputStream is) {
+		String title = "学号时间名称类型";
 		try {
 			Workbook wk = new HSSFWorkbook(is);
 			Sheet sheet = wk.getSheetAt(0);
@@ -163,13 +163,13 @@ public class ExcelProcess {
 			if (row == null)
 				return "请上传正确的文件";
 			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < 3; i++)
+			for (int i = 0; i < 4; i++)
 				sb.append(row.getCell(i));
 			if (!sb.toString().equals(title))
 				return "你的标题不正确,标题请根据模板来设定";
 			for (int i = 1; i <= sheet.getLastRowNum(); i++) {
 				Row rowtemp = sheet.getRow(i);
-				String[] rowstr = CustomerUtil.getRowString(rowtemp, 3);
+				String[] rowstr = CustomerUtil.getRowString(rowtemp, 4);
 				if (rowstr == null)
 					return "第" + (i + 1) + "行的数据中不能有空";
 				int ret = CustomerUtil.strIsEmpty(rowstr);
@@ -182,7 +182,7 @@ public class ExcelProcess {
 				else if (!rowstr[1].matches("\\d{4}-(0\\d|\\d|1[0-2])-(0\\d|\\d|[1-2]\\d|3[0-1])"))
 					return "第" + (i + 1) + "行," + 'B' + "列的文本请输入YYYY/MM/DD格式的时间";
 				else {
-					Well w = new Well(0, Long.parseLong(rowstr[0]), rowstr[1], type ? "奖学金" : "评优", rowstr[2]);
+					Well w = new Well(0, Long.parseLong(rowstr[0]), rowstr[1], rowstr[3], rowstr[2]);
 					list.add(w);
 				}
 			}
@@ -198,7 +198,8 @@ public class ExcelProcess {
 	}
 
 	public static String criticismProcess(CriticismService criticismService, InputStream is) {
-		String title = "学号时间/学期原因通报类型处分";
+		String title = "学号时间(学期)原因通报类型处分";
+		System.out.println("---------");
 		try {
 			Workbook wk = new HSSFWorkbook(is);
 			Sheet sheet = wk.getSheetAt(0);

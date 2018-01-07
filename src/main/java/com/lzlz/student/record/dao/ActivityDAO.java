@@ -33,7 +33,13 @@ public interface ActivityDAO {
 	 * @return 所有未被通过的数据集合
 	 */
 	public List<Activity> selectAllByNoPass();
-
+	
+	/**
+	 * 通过老师所在的班级查询所有没有通过的活动申请
+	 * @param tno 班级编号
+	 * @return
+	 */
+	public List<Activity> selectByTno(@Param("tno")long tno);
 	/**
 	 * 通过申请人查询数据
 	 * 

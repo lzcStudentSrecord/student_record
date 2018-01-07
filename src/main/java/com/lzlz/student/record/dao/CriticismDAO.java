@@ -52,5 +52,14 @@ public interface CriticismDAO {
 	 *            老师编号
 	 * @return 数据集合
 	 */
-	public List<Criticism> selectByTno(@Param("criticism") long tno);
+	public List<Criticism> selectByTno(@Param("tno") long tno);
+
+	/**
+	 * 通过记录编号查询一条记录
+	 * 
+	 * @param crid
+	 *            记录编号
+	 * @return
+	 */
+	public Criticism selectByCrid(@Param("crid") long crid);
 }

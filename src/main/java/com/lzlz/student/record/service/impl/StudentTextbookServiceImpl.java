@@ -35,13 +35,23 @@ public class StudentTextbookServiceImpl implements StudentTextbookService {
 	}
 
 	@Override
-	public List<StudentTextbook> selectByTnoWithNoPass(long tno) {
-		return studentTextbookDAO.selectByTnoWithNoPass(tno);
+	public List<StudentTextbook> selectByTno(long tno) {
+		return studentTextbookDAO.selectByTno(tno);
 	}
 
 	@Override
 	public int updateByStno(long stno) {
 		return studentTextbookDAO.updateByStno(stno);
+	}
+
+	@Override
+	public StudentTextbook selectStudentTextbookByStno(long stno) {
+		return studentTextbookDAO.selectStudentTextbookByStno(stno);
+	}
+
+	@Override
+	public int deleteByStno(long stno) {
+		return studentTextbookDAO.deleteByStno(stno);
 	}
 
 }

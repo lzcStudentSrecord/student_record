@@ -28,6 +28,15 @@ public interface StudentTextbookDAO {
 	public int insertByList(@Param("list") List<StudentTextbook> list);
 
 	/**
+	 * 通过记录编号删除一条数据
+	 * 
+	 * @param stno
+	 *            教材选择id
+	 * @return
+	 */
+	public int deleteByStno(@Param("stno") long stno);
+
+	/**
 	 * 通过教材选择表的id来修改教材选择表的状态
 	 * 
 	 * @param stno
@@ -52,6 +61,14 @@ public interface StudentTextbookDAO {
 	 *            学号
 	 * @return 数据集合
 	 */
-	public List<StudentTextbook> selectByTnoWithNoPass(@Param("tno") long tno);
+	public List<StudentTextbook> selectByTno(@Param("tno") long tno);
+
+	/**
+	 * 通过编号查询一条信息
+	 * 
+	 * @param stno
+	 * @return
+	 */
+	public StudentTextbook selectStudentTextbookByStno(@Param("stno") long stno);
 
 }

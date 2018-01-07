@@ -38,4 +38,14 @@ public class WellServiceImpl implements WellService {
 		return wellDAO.selectByTno(tno);
 	}
 
+	@Override
+	public int deleteByWeid(long weid) {
+		return wellDAO.deleteByWeid(weid);
+	}
+
+	@Override
+	public Well selectByWeid(long weid) {
+		return wellDAO.selectByWeid(weid);
+	}
+
 }

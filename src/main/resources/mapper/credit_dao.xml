@@ -15,14 +15,14 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 		INSERT credit(sno,cname,ctype,cscore) value
-		<foreach collection="list" item="credit" open="(" close=")"
+		<foreach collection="list" item="credit"
 			separator=",">
-			#{credit.sno},#{credit.cname},#{credit.ctype},#{credit.cscore}
+			(#{credit.sno},#{credit.cname},#{credit.ctype},#{credit.cscore})
 		</foreach>
 	</insert>
 	<select id="selectByTno" parameterType="java.lang.Long"
 		resultType="Credit">
-		SELECT * FROM credit WHERE sno=(
+		SELECT * FROM credit WHERE sno in (
 		SELECT sno FROM student
 		WHERE tfrom=#{tno}
 		);

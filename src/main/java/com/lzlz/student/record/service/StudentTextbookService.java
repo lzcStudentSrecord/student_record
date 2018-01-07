@@ -14,7 +14,11 @@ public interface StudentTextbookService {
 	
 	public int updateByStno(long stno);
 
+	public int deleteByStno(long stno);
+	
 	public List<StudentTextbook> selectBySnoWithNoPass(long sno);
 	
-	public List<StudentTextbook> selectByTnoWithNoPass(long tno);
+	public List<StudentTextbook> selectByTno(long tno);
+	
+	public StudentTextbook selectStudentTextbookByStno(long stno);
 }

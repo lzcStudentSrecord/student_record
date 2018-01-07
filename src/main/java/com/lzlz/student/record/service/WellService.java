@@ -15,4 +15,8 @@ public interface WellService {
 	public List<Well> selectBySno(long sno);
 
 	public List<Well> selectByTno(long tno);
+
+	public Well selectByWeid(long weid);
+
+	public int deleteByWeid(long weid);
 }

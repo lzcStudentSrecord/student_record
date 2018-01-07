@@ -12,7 +12,8 @@
 		#{activity.astate}
 		);
 	</insert>
-	<select id="selectByAid" parameterType="java.lang.Long" resultType="Activity">
+	<select id="selectByAid" parameterType="java.lang.Long"
+		resultType="Activity">
 		SELECT * FROM activity
 		WHERE aid = #{aid}
 	</select>
@@ -24,7 +25,11 @@
 	<!-- 给学生们展示用的方法 -->
 	<select id="selectAllByProposer" resultType="Activity">
 		SELECT * FROM
-		activity WHERE proposer = #{sno};
+		activity WHERE proposer=#{sno};
+	</select>
+	<select id="selectByTno" resultType="Activity">
+		SELECT * FROM activity WHERE astate='未通过' and
+		proposer in (SELECT sno FROM student WHERE tfrom=#{tno})
 	</select>
 	<update id="updateByActivity" parameterType="Activity">
 		UPDATE activity set
@@ -32,7 +37,7 @@
 		acontent=#{activity.acontent},
 		aaffect=#{activity.aaffect},astate=#{activity.astate}
 		WHERE
-		aid=#{activity.aid} and #{activity.astate}='未通过';
+		aid=#{activity.aid};
 	</update>
 
 	<delete id="deleteByAid" parameterType="java.lang.Long">

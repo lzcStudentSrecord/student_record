@@ -42,7 +42,7 @@ public interface CreditDAO {
 	 * @param tno 老师编号
 	 * @return 数据集合
 	 */
-	public List<Credit> selectByTno(@Param("Tno") long tno);
+	public List<Credit> selectByTno(@Param("tno") long tno);
 	/**
 	 * 通过学分编号查询一条数据
 	 * 

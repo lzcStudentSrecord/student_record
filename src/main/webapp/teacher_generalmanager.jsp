@@ -1,49 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>模板</title>
+<title>后台</title>
 <!-- CSS -->
-<c:if test="${empty student}">
-	<script type="text/javascript">
-		alert("请先登录");
-		location = "index.jsp";
-	</script>
-</c:if>
 
-<link href="resources/form-3/assets/css/fresh-bootstrap-table.css"
+<link href="../resources/form-3/assets/css/fresh-bootstrap-table.css"
 	rel="stylesheet" />
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 <link rel="stylesheet"
-	href="resources/form-3/assets/bootstrap/css/bootstrap.min.css">
+	href="../resources/form-3/assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="resources/form-3/assets/font-awesome/css/font-awesome.min.css">
+	href="../resources/form-3/assets/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet"
-	href="resources/form-3/assets/css/form-elements.css">
-<link rel="stylesheet" href="resources/form-3/assets/css/style1.css">
-<link rel="shortcut icon" href="resources/form-3/assets/ico/favicon.png">
+	href="../resources/form-3/assets/css/form-elements.css">
+<link rel="stylesheet" href="../resources/form-3/assets/css/style1.css">
+<link rel="shortcut icon" href="../resources/form-3/assets/ico/favicon.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="resources/form-3/assets/ico/apple-touch-icon-144-precomposed.png">
+	href="../resources/form-3/assets/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="resources/form-3/assets/ico/apple-touch-icon-114-precomposed.png">
+	href="../resources/form-3/assets/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="resources/form-3/assets/ico/apple-touch-icon-72-precomposed.png">
+	href="../resources/form-3/assets/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
-	href="resources/form-3/assets/ico/apple-touch-icon-57-precomposed.png">
-<link rel="stylesheet" href="resources/form-3/css/pretty.min.css">
-<link rel="stylesheet" href="resources/css/timedropper.css">
+	href="../resources/form-3/assets/ico/apple-touch-icon-57-precomposed.png">
 <style>
 * {
 	margin: 0;
 	padding: 0;
-}
-
-font {
-	color: #000;
 }
 
 html {
@@ -170,28 +158,13 @@ p {
 	margin-top: 20px;
 }
 
-.bootstrap-frm1 {
-	margin-left: auto;
-	margin-right: auto;
-	height: 50%;
-	width: 30%;
-	background: #FFF;
-	padding: 20px 30px 20px 30px;
-	font: 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #888;
-	text-shadow: 1px 1px 1px #FFF;
-	border: 3px solid #D2D2D2;
-	border-radius: 10px;
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-}
-
 .bootstrap-frm2 {
-	margin: 0 auto;
+	margin-left: 110px;
 	margin-top: 20px;
 	height: 50px;
 	width: 120px;
 	background: #FFF;
+	opacity: 0.66;
 	text-align: center;
 	font: 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #888;
@@ -205,7 +178,7 @@ p {
 </head>
 
 <body
-	background="resources/form-3/assets/img/backgrounds/eb9f850a19d8bc3ee720ff63828ba61ea8d34509.jpg">
+	background="../resources/form-3/assets/img/backgrounds/eb9f850a19d8bc3ee720ff63828ba61ea8d34509.jpg">
 	<nav class="navbar-inverse visible-lg visible-md" role="navigation">
 	</nav>
 	<input type='checkbox' id='sideToggle'>
@@ -243,7 +216,7 @@ p {
 				href="/teacher_adjustlesson.jsp">调课</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书确认</a></li>
+				href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书管理</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
 				href="/Activity/selectByTno">活动管理</a></li>
@@ -275,48 +248,58 @@ p {
 	</div>
 
 	<div>
-		<h1>模板</h1>
-
+		<h1>学生后台</h1>
+		<div style="width: 30%; height: 100%; margin: 0 auto">
+			<form action="../GeneralCertificate/insertByList" method="post"
+				enctype="multipart/form-data">
+				<label>通过excel添加学生信息</label> <input
+					style="float: right; margin-top: 30px;" type="file" name="excel">
+			<input style="float: right;margin-top: 60px;" type="submit" value="提交">
+			</form>
+		</div>
 	</div>
-	<div
-		style="width: 60%; height: 100%; border: 3px solid #d1d1d1; border-radius: 20px; background: #fff; margin: 0 auto; padding: 20px; opacity: 0.66">
-		<div>
-				<h3 style="text-align: left; margin-left: 25%; color: #000;">
-					<strong>申请事由</strong><input name="reason" id="reason"
-						style="height: 40px; border: 1px solid #d1d1d1; border-radius: 20px; margin-left: 20px; margin-top: 10px;"
-						type="text">
-				</h3>
-				<br>
-				<h3 style="text-align: left; margin-left: 25%; color: #000;">
-					<strong>申请教室</strong><select name="craddress" id="craddress">
-					
-					</select>
-				</h3>
-				<br>
-				<h3 style="text-align: left; margin-left: 25%; color: #000;">
-					<strong>使用日期</strong><input name="startdate" onfocus="MyCalendar.SetDate(this)" id="startdate"
-						style="height: 40px; border: 1px solid #d1d1d1; border-radius: 20px; margin-left: 20px; margin-top: 10px;"
-						type="text">		
-				</h3>
-				<br>
-				<h3 style="text-align: left; margin-left: 25%; color: #000;">
-					<strong>使用时间</strong><input name="starttime" id="starttime"
-						style="height: 40px; border: 1px solid #d1d1d1; border-radius: 20px; margin-left: 20px; margin-top: 10px;"
-						type="text">
-				</h3>
-				<br>
-				<h3 style="text-align: left; margin-left: 25%; color: #000;">
-					<strong>归还日期</strong><input name="enddate" onfocus="MyCalendar.SetDate(this)" id="enddate"
-						style="height: 40px; border: 1px solid #d1d1d1; border-radius: 20px; margin-left: 20px; margin-top: 10px;"
-						type="text">	
-				</h3>
-				<br>
-				<h3 style="text-align: left; margin-left: 25%; color: #000;">
-					<strong>归还时间</strong><input name="endtime" id="endtime"
-						style="height: 40px; border: 1px solid #d1d1d1; border-radius: 20px; margin-left: 20px; margin-top: 10px;"
-						type="text">
-				</h3>
-				<br> <input class="bootstrap-frm2" type="button" id="subajax"> <br>
+	<div class="wrapper">
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-8 col-md-offset-2">
+
+					<div style="margin-top: 100px; opacity: 0.76" class="fresh-table ">
+						<!--    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange                  
+                        Available colors only for the toolbar: toolbar-colo	r-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+                -->
+
+						<table id="fresh-table" class="table">
+							<div class="toolbar">
+								<button class="btn btn-default">返回</button>
+							</div>
+
+							<thead style="">
+								<th>学号</th>
+								<th>类型</th>
+								<th>时间</th>
+								<th>分数</th>
+								<th data-field="actions" data-events="operateEvents">操作</th>
+							</thead>
+							<tbody>
+								<c:forEach items="${GeneralCertificatelist }"
+									var="generalCertificate">
+									<tr>
+										<td>${generalCertificate.sno }</td>
+										<td>${generalCertificate.gctype }</td>
+										<td>${generalCertificate.gctime }</td>
+										<td>${generalCertificate.gcgrade }</td>
+										<td><a
+											href="/GeneralCertificate/deleteByGcid?gcid=${generalCertificate.gcid }">删除</a>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -324,38 +307,75 @@ p {
 
 </body>
 <script type="text/javascript"
-	src="resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="resources/form-3/assets/js/bootstrap.js"></script>
-<script type="text/javascript" src="resources/form-3/assets/js/bootstrap-table.js"></script>
-<script type="text/javascript" src="resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="resources/form-3/assets/js/bootstrap.js"></script>
-<script type="text/javascript" src="resources/form-3/assets/js/bootstrap-table.js"></script>
-<script type="text/javascript" src="resources/js/timedropper.js"></script>
-<script type="text/javascript" src="resources/js/mydate.js"></script>
-<script type="text/javascript" src="resources/controller/student_applyclassroom_controller.js"></script>
-<script>
-$( "#starttime" ).timeDropper();
-$( "#endtime" ).timeDropper();
-</script>
+	src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/bootstrap.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/bootstrap-table.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/bootstrap.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/bootstrap-table.js"></script>
 <script type="text/javascript">
-$("#subajax").click(function(){
-	$.ajax({
-		url:"/ApplyClassroom/insertByStudent",
-		type:"post",
-		data:{
-			reason:$("#reason").val(),
-			craddress:$("#craddress").find("option:selected").text(),
-			startTime:$("#startdate").val()+' '+$("#starttime").val().trim()+":00",
-			endTime:$("#enddate").val()+' '+$("#endtime").val().trim()+":00"
-		},success : function(data){
-			if(data != 0){
-				alert("申请成功");
-			}else{
-				alert("服务器出错");
+	var $table = $('#fresh-table'), $alertBtn = $('#alertBtn'), full_screen = false;
+
+	$().ready(function() {
+		$table.bootstrapTable({
+			toolbar : ".toolbar",
+
+			showRefresh : true,
+			search : true,
+			showToggle : true,
+			showColumns : true,
+			pagination : true,
+			striped : true,
+			pageSize : 8,
+			pageList : [ 8, 10, 25, 50, 100 ],
+
+			formatShowingRows : function(pageFrom, pageTo, totalRows) {
+				//do nothing here, we don't want to show the text "showing x of y from..." 
+			},
+			formatRecordsPerPage : function(pageNumber) {
+				return pageNumber + " rows visible";
+			},
+			icons : {
+				refresh : 'fa fa-refresh',
+				toggle : 'fa fa-th-list',
+				columns : 'fa fa-columns',
+				detailOpen : 'fa fa-plus-circle',
+				detailClose : 'fa fa-minus-circle'
 			}
-		}
+		});
+
+		$(window).resize(function() {
+			$table.bootstrapTable('resetView');
+		});
+
+		window.operateEvents = {
+			'click .like' : function(e, value, row, index) {
+				alert('You click like icon, row: ' + JSON.stringify(row));
+				console.log(value, row, index);
+			},
+			'click .edit' : function(e, value, row, index) {
+				alert('You click edit icon, row: ' + JSON.stringify(row));
+				console.log(value, row, index);
+			},
+			'click .remove' : function(e, value, row, index) {
+				$table.bootstrapTable('remove', {
+					field : 'id',
+					values : [ row.id ]
+				});
+
+			}
+		};
+
+		$alertBtn.click(function() {
+			alert("You pressed on Alert");
+		});
+
 	});
-});
 </script>
 </html>
-</html>
+

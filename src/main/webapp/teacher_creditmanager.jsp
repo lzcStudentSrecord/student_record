@@ -8,26 +8,26 @@
 <title>后台</title>
 <!-- CSS -->
 
-<link href="resources/form-3/assets/css/fresh-bootstrap-table.css"
+<link href="../../resources/form-3/assets/css/fresh-bootstrap-table.css"
 	rel="stylesheet" />
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 <link rel="stylesheet"
-	href="resources/form-3/assets/bootstrap/css/bootstrap.min.css">
+	href="../resources/form-3/assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="resources/form-3/assets/font-awesome/css/font-awesome.min.css">
+	href="../resources/form-3/assets/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet"
-	href="resources/form-3/assets/css/form-elements.css">
-<link rel="stylesheet" href="resources/form-3/assets/css/style1.css">
-<link rel="shortcut icon" href="resources/form-3/assets/ico/favicon.png">
+	href="../resources/form-3/assets/css/form-elements.css">
+<link rel="stylesheet" href="../resources/form-3/assets/css/style1.css">
+<link rel="shortcut icon" href="../resources/form-3/assets/ico/favicon.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="resources/form-3/assets/ico/apple-touch-icon-144-precomposed.png">
+	href="../resources/form-3/assets/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="resources/form-3/assets/ico/apple-touch-icon-114-precomposed.png">
+	href="../resources/form-3/assets/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="resources/form-3/assets/ico/apple-touch-icon-72-precomposed.png">
+	href="../resources/form-3/assets/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
-	href="resources/form-3/assets/ico/apple-touch-icon-57-precomposed.png">
+	href="../resources/form-3/assets/ico/apple-touch-icon-57-precomposed.png">
 <style>
 * {
 	margin: 0;
@@ -178,7 +178,7 @@ p {
 </head>
 
 <body
-	background="form-3/assets/img/backgrounds/eb9f850a19d8bc3ee720ff63828ba61ea8d34509.jpg">
+	background="../resources/form-3/assets/img/backgrounds/eb9f850a19d8bc3ee720ff63828ba61ea8d34509.jpg">
 	<nav class="navbar-inverse visible-lg visible-md" role="navigation">
 	</nav>
 	<input type='checkbox' id='sideToggle'>
@@ -186,53 +186,61 @@ p {
 		<h2 style="margin-top: 40px">导航栏</h2>
 		<ul id="lia" style="margin-top: 120px">
 			<!--老师功能-->
+			<c:if test="${!empty teacher }">
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">学生信息管理</a></li>
+				href="/Student/selectAllByTno">学生信息管理</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">学生学分管理</a></li>
+				href="/Credit/selectByTno">学生学分管理</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">评优奖学（Excel导入）</a></li>
+				href="/Well/selectByTno">评优奖学（Excel导入）</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">通报批评（Excel导入）</a></li>
+				href="/Criticism/selectByTno">通报批评（Excel导入）</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">专业证书添加（Excel导入）</a></li>
+				href="/GeneralCertificate/selectByTno">普通证书添加（Excel导入）</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">教材费结算信息添加</a></li>
+				href="/StudentTextbook/selectByTno">教材费结算信息添加</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">发布公告</a></li>
+				href="/teacher_applyclassroom.jsp">教室申请</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">教室使用批准</a></li>
+				href="/ApplyClassroom/selectByTno">教室使用批准</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">调课</a></li>
+				href="/teacher_adjustlesson.jsp">调课</a></li>
 			<hr>
-
-
+			<li style="text-align: center"><a style="color: aliceblue"
+				href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书管理</a></li>
+			<hr>
+			<li style="text-align: center"><a style="color: aliceblue"
+				href="/Activity/selectByTno">活动管理</a></li>
+			<hr>
+			</c:if>
 			<!--学生功能-->
+			<c:if test="${!empty student }">
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">教材费确认</a></li>
+				href="/StudentTextbook/selectBySnoWithNoPass">教材费确认</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">职业资格证书添加</a></li>
+				href="/student_profess.jsp">职业资格证书添加</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">教室使用申请</a></li>
+				href="/student_applyclassroom.jsp">教室使用申请</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">活动申请</a></li>
+				href="/student_activity.jsp">活动申请</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
 				href="#">查看消息</a></li>
 			<hr>
+			</c:if>
 		</ul>
 	</aside>
 	<div id='wrap'>
@@ -242,10 +250,11 @@ p {
 	<div>
 		<h1>学生后台</h1>
 		<div style="width: 30%; height: 100%; margin: 0 auto">
-			<form action="Credit/insertByList" method="post"
+			<form action="/Credit/insertByList" method="post"
 				enctype="multipart/form-data">
 				<label>通过excel添加评优教学</label> <input
 					style="float: right; margin-top: 30px;" type="file" name="excel">
+					<input style="float: right;margin-top: 60px;" type="submit" value="提交">
 			</form>
 		</div>
 	</div>
@@ -274,14 +283,14 @@ p {
 								<th data-field="actions" data-events="operateEvents">操作</th>
 							</thead>
 							<tbody>
-								<c:forEach items="${welllist }" var="well">
+								<c:forEach items="${creditlist }" var="credit">
 									<tr>
-										<td>${well.sno }</td>
-										<td>${well.wname }</td>
-										<td>${well.getTime }</td>
-										<td>${well.wtype }</td>
+										<td>${credit.sno }</td>
+										<td>${credit.cname }</td>
+										<td>${credit.ctype }</td>
+										<td>${credit.cscore }</td>
 										<td><a
-											href="/Credit/deleteByCredId?CredId=${credit.credId }">删除</a></td>
+											href="/Credit/deleteByCredId?credId=${credit.credId }">删除</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -296,17 +305,17 @@ p {
 
 </body>
 <script type="text/javascript"
-	src="resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
+	src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript"
-	src="resources/form-3/assets/js/bootstrap.js"></script>
+	src="../resources/form-3/assets/js/bootstrap.js"></script>
 <script type="text/javascript"
-	src="resources/form-3/assets/js/bootstrap-table.js"></script>
+	src="../resources/form-3/assets/js/bootstrap-table.js"></script>
 <script type="text/javascript"
-	src="resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
+	src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript"
-	src="resources/form-3/assets/js/bootstrap.js"></script>
+	src="../resources/form-3/assets/js/bootstrap.js"></script>
 <script type="text/javascript"
-	src="resources/form-3/assets/js/bootstrap-table.js"></script>
+	src="../resources/form-3/assets/js/bootstrap-table.js"></script>
 <script type="text/javascript">
 	var $table = $('#fresh-table'), $alertBtn = $('#alertBtn'), full_screen = false;
 

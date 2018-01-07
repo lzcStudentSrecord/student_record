@@ -43,6 +43,7 @@ public class StudentController {
 			request.setAttribute("ret", 2);
 			return "retprocess";
 		}
+		session.setAttribute("teacher", null);
 		session.setAttribute("student", student);
 		request.setAttribute("ret", 3);
 		return "retprocess";
@@ -51,21 +52,16 @@ public class StudentController {
 	@RequestMapping(value = "/insertByList", method = RequestMethod.POST)
 	public String insert(@RequestParam("excel") MultipartFile file, HttpServletRequest request, HttpSession session)
 			throws IOException {
+		String filename = file.getOriginalFilename();
+		if (!filename.substring(filename.indexOf('.')).equalsIgnoreCase(".xls")) {
+			request.setAttribute("ret", 14);
+			return "retprocess";
+		}
 		Teacher t = (Teacher) session.getAttribute("teacher");
 		String result = ExcelProcess.studentProcess(studentService, file.getInputStream(), t.getTfrom());
 		request.setAttribute("ret", 15);
 		request.setAttribute("result", result);
 		return "retprocess";
-	}
-
-	@RequestMapping(value = "/select", method = RequestMethod.GET)
-	public String select(@RequestParam("id") long l, HttpServletRequest request) {
-		List<Long> list = studentService.getAllId();
-		if (list.contains(l)) {
-			System.out.println("the id is exist");
-			request.setAttribute("content", "天依殿下我爱你");
-		}
-		return "index";
 	}
 
 	@RequestMapping(value = "/updateByStudent", method = RequestMethod.POST)
@@ -81,6 +77,7 @@ public class StudentController {
 			request.setAttribute("ret", 4);
 		else
 			request.setAttribute("ret", 5);
+		session.setAttribute("student", student);
 		return "retprocess";
 	}
 
@@ -139,12 +136,6 @@ public class StudentController {
 				request.setAttribute("ret", 13);
 			return "retprocess";
 		}
-	}
-
-	@RequestMapping(value = "/insertByStudent", method = RequestMethod.GET)
-	public @ResponseBody int insertByStudent() {
-		return studentService.insertByStudent(new Student(201615230142L, "张路平", "女", 2016, 1, "软件与信息服务", "二次元",
-				"+8617862733349", "张进强", "+8617865058755", "无", 1601, "在校"));
 	}
 
 	@RequestMapping(value = "/selectAllByTno", method = RequestMethod.GET)

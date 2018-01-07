@@ -53,6 +53,7 @@ public class TeacherController {
 			request.setAttribute("ret", 2);
 			return "retprocess";
 		}
+		session.setAttribute("student", null);
 		session.setAttribute("teacher", teacher);
 		request.setAttribute("ret", 3);
 		return "retprocess";

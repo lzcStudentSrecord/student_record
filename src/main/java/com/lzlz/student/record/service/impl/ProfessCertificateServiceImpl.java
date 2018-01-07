@@ -48,4 +48,14 @@ public class ProfessCertificateServiceImpl implements ProfessCertificateService 
 		return professCertificateDAO.selectBySnoWithAll(sno);
 	}
 
+	@Override
+	public ProfessCertificate selectByPcid(long pcid) {
+		return professCertificateDAO.selectByPcid(pcid);
+	}
+
+	@Override
+	public List<ProfessCertificate> selectByTnoWithHadPass(long tno) {
+		return professCertificateDAO.selectByTnoWithHadPass(tno);
+	}
+
 }

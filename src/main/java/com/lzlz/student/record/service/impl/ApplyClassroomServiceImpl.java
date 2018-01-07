@@ -10,7 +10,7 @@ import com.lzlz.student.record.entiy.ApplyClassroom;
 import com.lzlz.student.record.service.ApplyClassroomService;
 
 @Service("applyClassroomService")
-public class ApplyClassroomServiceImpl implements ApplyClassroomService{
+public class ApplyClassroomServiceImpl implements ApplyClassroomService {
 	private ApplyClassroomDAO applyClassroomDAO;
 
 	@Autowired
@@ -26,6 +26,21 @@ public class ApplyClassroomServiceImpl implements ApplyClassroomService{
 	@Override
 	public int insertByApplyClassroom(ApplyClassroom applyClassroom) {
 		return applyClassroomDAO.insertByApplyClassroom(applyClassroom);
+	}
+
+	@Override
+	public List<ApplyClassroom> selectByTno(long tno) {
+		return applyClassroomDAO.selectByTno(tno);
+	}
+
+	@Override
+	public ApplyClassroom selectByAcid(long acid) {
+		return applyClassroomDAO.selectByAcid(acid);
+	}
+
+	@Override
+	public int updateByAcid(long acid) {
+		return applyClassroomDAO.updateByAcid(acid);
 	}
 
 }

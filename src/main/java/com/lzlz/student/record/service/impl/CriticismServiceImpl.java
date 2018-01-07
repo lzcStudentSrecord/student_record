@@ -43,4 +43,9 @@ public class CriticismServiceImpl implements CriticismService {
 		return criticismDAO.selectByTno(tno);
 	}
 
+	@Override
+	public Criticism selectByCrid(long crid) {
+		return criticismDAO.selectByCrid(crid);
+	}
+
 }

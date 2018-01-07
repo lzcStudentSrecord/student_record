@@ -9,10 +9,23 @@
 	</select>
 	<insert id="insertByApplyClassroom" parameterType="ApplyClassroom">
 		INSERT
-		applyclassroom value(
+		applyclassroom(proposer,reason,craddress,startTime,endTime,acstate) value(
 		#{applyClassroom.proposer},#{applyClassroom.reason},
 		#{applyClassroom.craddress},#{applyClassroom.startTime},
 		#{applyClassroom.endTime},#{applyClassroom.acstate}
 		);
 	</insert>
+	<select id="selectByTno" resultType="ApplyClassroom"
+		parameterType="java.lang.Long">
+		SELECT * FROM applyclassroom WHERE acstate='未通过' and
+		proposer IN (SELECT SNO FROM student WHERE tfrom=#{tno});
+	</select>
+	<select id="selectByAcid" resultType="ApplyClassroom"
+		parameterType="java.lang.Long">
+		SELECT * FROM applyclassroom WHERE acid=#{acid};
+	</select>
+	<update id="updateByAcid" parameterType="java.lang.Long">
+		UPDATE applyclassroom
+		SET acstate='已通过' WHERE acid=#{acid};
+	</update>
 </mapper>

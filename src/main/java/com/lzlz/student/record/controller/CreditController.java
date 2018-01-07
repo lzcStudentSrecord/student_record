@@ -96,6 +96,10 @@ public class CreditController {
 			return "retprocess";
 		}
 		Credit credit = creditService.selectByCredId(credId);
+		if(credit == null){
+			request.setAttribute("ret",-1);
+			return "retprocess";
+		}
 		Student stu = studentService.getStudentBySno(credit.getSno());
 		if (stu == null) {
 			request.setAttribute("ret", -1);

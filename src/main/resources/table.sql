@@ -46,7 +46,7 @@ cscore tinyint unsigned not null-- 学分
 create table well(
 weid bigint primary key auto_increment,-- ID
 sno bigint not null,-- 学号
-getTime time not null,-- 获得时间
+getTime date not null,-- 获得时间
 wtype enum('奖学金','评优') not null,-- 获得类型
 wname varchar(100) not null-- 名称
 );
@@ -113,12 +113,13 @@ newaddress varchar(100) not null-- 新上课地点
 
 -- 教室申请
 create table applyclassroom(
+acid int primary key auto_increment,
 proposer bigint not null,-- 申请人
 reason varchar(255) not null,-- 申请原因
 craddress varchar(100) not null,-- 教室地址
 startTime datetime not null,-- 使用开始时间
-endTime datetime not null-- 使用结束时间
-acstate enum('未通过','已通过') not null--教室申请状态
+endTime datetime not null,-- 使用结束时间
+acstate enum('未通过','已通过') not null-- 教室申请状态
 );
 
 -- 主题帖

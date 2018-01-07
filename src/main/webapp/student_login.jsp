@@ -53,10 +53,10 @@
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2 text">
 						<h1>
-							<strong>后台管理</strong> 教师登录
+							<strong>后台管理</strong> 学生登录
 						</h1>
 						<div class="description">
-							<p>后台管理系统管理员登录</p>
+							<p></p>
 						</div>
 					</div>
 				</div>

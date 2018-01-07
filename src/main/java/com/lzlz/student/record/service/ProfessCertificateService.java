@@ -18,6 +18,10 @@ public interface ProfessCertificateService {
 
 	public List<ProfessCertificate> selectBySnoWithAll(long sno);
 	
+	public List<ProfessCertificate> selectByTnoWithHadPass(long tno);
+	
 	public List<ProfessCertificate> selectByTnoWithNoPass(long tno);
+	
+	public ProfessCertificate selectByPcid(long pcid);
 
 }

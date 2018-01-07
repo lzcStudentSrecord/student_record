@@ -17,4 +17,6 @@ public interface CriticismService {
 	public int deleteByCrid(long crid);
 
 	public List<Criticism> selectByTno(long tno);
+
+	public Criticism selectByCrid(long crid);
 }

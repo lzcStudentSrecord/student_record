@@ -53,4 +53,10 @@ public interface GeneralCertificateDAO {
 	 * @return 数据集合
 	 */
 	public List<GeneralCertificate> selectByTno(long tno);
+	/**
+	 * 通过记录编号删除一条数据
+	 * @param gcid
+	 * @return
+	 */
+	public GeneralCertificate selectByGcid(@Param("gcid")long gcid);
 }

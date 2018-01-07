@@ -48,4 +48,9 @@ public class ActivityServiceImpl implements ActivityService {
 		return activityDAO.selectByAid(aid);
 	}
 
+	@Override
+	public List<Activity> selectByTno(long tno) {
+		return activityDAO.selectByTno(tno);
+	}
+
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 <mapper namespace="com.lzlz.student.record.dao.StudentTextbookDAO">
 
 	<insert id="insertByStudentTextbook" parameterType="StudentTextbook">
@@ -18,13 +18,16 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 		INSERT student_textbook(sno,tbname,num,price,state) VALUE
-		<foreach collection="list" item="studentTextbook" open="("
-			close=")" separator=",">
-			#{studentTextbook.sno},#{studentTextbook.tbname},
+		<foreach collection="list" item="studentTextbook"  separator=",">
+			(#{studentTextbook.sno},#{studentTextbook.tbname},
 			#{studentTextbook.num},#{studentTextbook.price},
-			'未确认'
+			'未确认')
 		</foreach>
 	</insert>
+	<delete id="deleteByStno" parameterType="java.lang.Long">
+		delete from
+		student_textbook where stno=#{stno}
+	</delete>
 	<update id="updateByStno" parameterType="java.lang.Long">
 		UPDATE student_textbook
 		set state='已确认'
@@ -35,12 +38,14 @@
 		SELECT * FROM student_textbook WHERE sno=#{sno} and
 		state='未确认';
 	</select>
-	<select id="selectByTnoWithNoPass" parameterType="java.lang.Long"
+	<select id="selectByTno" parameterType="java.lang.Long"
 		resultType="StudentTextbook">
-		SELECT * FROM student_textbook WHERE state='未确认' AND sno=(
-			SELECT sno FROM student WHERE tfrom=(
-				SELECT tfrom FROM teacher WHERE tno=#{tno}
-			)
+		SELECT * FROM student_textbook WHERE sno in (
+		SELECT sno FROM student WHERE tfrom=#{tno}
 		);
+	</select>
+	<select id="selectStudentTextbookByStno" parameterType="java.lang.Long"
+		resultType="StudentTextbook">
+		SELECT * FROM student_textbook WHERE stno=#{stno}
 	</select>
 </mapper>

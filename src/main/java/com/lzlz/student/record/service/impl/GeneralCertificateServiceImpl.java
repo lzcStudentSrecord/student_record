@@ -43,4 +43,9 @@ public class GeneralCertificateServiceImpl implements GeneralCertificateService 
 		return generalCertificateDAO.selectByTno(tno);
 	}
 
+	@Override
+	public GeneralCertificate selectByGcid(long gcid) {
+		return generalCertificateDAO.selectByGcid(gcid);
+	}
+
 }

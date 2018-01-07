@@ -19,7 +19,8 @@
 <link rel="stylesheet"
 	href="../resources/form-3/assets/css/form-elements.css">
 <link rel="stylesheet" href="../resources/form-3/assets/css/style1.css">
-<link rel="shortcut icon" href="../resources/form-3/assets/ico/favicon.png">
+<link rel="shortcut icon"
+	href="../resources/form-3/assets/ico/favicon.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="../resources/form-3/assets/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
@@ -187,59 +188,59 @@ p {
 		<ul id="lia" style="margin-top: 120px">
 			<!--老师功能-->
 			<c:if test="${!empty teacher }">
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Student/selectAllByTno">学生信息管理</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Credit/selectByTno">学生学分管理</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Well/selectByTno">评优奖学（Excel导入）</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Criticism/selectByTno">通报批评（Excel导入）</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/GeneralCertificate/selectByTno">普通证书添加（Excel导入）</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/StudentTextbook/selectByTno">教材费结算信息添加</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/teacher_applyclassroom.jsp">教室申请</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/ApplyClassroom/selectByTno">教室使用批准</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/teacher_adjustlesson.jsp">调课</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Student/selectAllByTno">学生信息管理</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Credit/selectByTno">学生学分管理</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Well/selectByTno">评优奖学（Excel导入）</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Criticism/selectByTno">通报批评（Excel导入）</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/GeneralCertificate/selectByTno">普通证书添加（Excel导入）</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/StudentTextbook/selectByTno">教材费结算信息添加</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/teacher_applyclassroom.jsp">教室申请</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/ApplyClassroom/selectByTno">教室使用批准</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/teacher_adjustlesson.jsp">调课</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
 				href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书管理</a></li>
 			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Activity/selectByTno">活动管理</a></li>
-			<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Activity/selectByTno">活动管理</a></li>
+				<hr>
 			</c:if>
 			<!--学生功能-->
 			<c:if test="${!empty student }">
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/StudentTextbook/selectBySnoWithNoPass">教材费确认</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/student_profess.jsp">职业资格证书添加</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/student_applyclassroom.jsp">教室使用申请</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/student_activity.jsp">活动申请</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">查看消息</a></li>
-			<hr>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/StudentTextbook/selectBySnoWithNoPass">教材费确认</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_profess.jsp">职业资格证书添加</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_applyclassroom.jsp">教室使用申请</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_activity.jsp">活动申请</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="#">查看消息</a></li>
+				<hr>
 			</c:if>
 		</ul>
 	</aside>
@@ -250,13 +251,12 @@ p {
 	<div>
 		<h1>学生后台</h1>
 		<div style="width: 30%; height: 100%; margin: 0 auto">
-			<form action="/Student/insertByList" method="post"
-				enctype="multipart/form-data">
-				<label>通过excel添加学生信息</label><input
+			<form action="../StudentTextbook/insertByList" method="post" enctype="multipart/form-data">
+				<label>通过excel添加学生信息</label> <input
 					style="float: right; margin-top: 30px;" type="file" name="excel">
-					 <input style="float: right;margin-top: 60px;" type="submit" value="提交">
-				
+			<input style="float: right;margin-top: 60px;" type="submit" value="提交">
 			</form>
+			<button id="stutb_insert" class="bootstrap-frm2">添加教材信息</button>
 		</div>
 	</div>
 	<div class="wrapper">
@@ -278,28 +278,25 @@ p {
 
 							<thead style="">
 								<th>学号</th>
-								<th>姓名</th>
-								<th>性别</th>
-								<th>年级</th>
-								<th>班级</th>
-								<th>专业</th>
-								<th>家庭住址</th>
-								<th>状态</th>
+								<th>教材名称</th>
+								<th>教材数量</th>
+								<th>教材价格</th>
+								<th>确认状态</th>
 								<th data-field="actions" data-events="operateEvents">操作</th>
 							</thead>
 							<tbody>
-								<c:forEach items="${studentlist }" var="student">
+								<c:forEach items="${studentTextbooklist }" var="studenttextbook">
 									<tr>
-										<td>${student.sno }</td>
-										<td>${student.sname }</td>
-										<td>${student.sgender }</td>
-										<td>${student.sgrade }</td>
-										<td>${student.sclass }</td>
-										<td>${student.sdept }</td>
-										<td>${student.saddress }</td>
-										<td>${student.sstate }</td>
-										<td><a href="/Student/selectBySno?sno=${student.sno }">修改</a>/<a
-											href="/Student/deleteBySno?sno=${student.sno }">删除</a></td>
+										<td>${studenttextbook.sno }</td>
+										<td>${studenttextbook.tbname }</td>
+										<td>${studenttextbook.num }</td>
+										<td>${studenttextbook.price }</td>
+										<td>${studenttextbook.state }</td>
+										<td><c:if test="${studenttextbook.state  eq '未确认' }">
+												<a
+													href="/StudentTextbook/deleteByNoPass?stno=${studenttextbook.stno }">
+													删除</a>
+											</c:if></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -382,6 +379,11 @@ p {
 			alert("You pressed on Alert");
 		});
 
+	});
+</script>
+<script type="text/javascript">
+	$("#stutb_insert").click(function(i) {
+		location = "../teacher_stubookinsert.jsp";
 	});
 </script>
 </html>

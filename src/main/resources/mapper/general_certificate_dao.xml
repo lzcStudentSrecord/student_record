@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 <mapper namespace="com.lzlz.student.record.dao.GeneralCertificateDAO">
 	<insert id="insertByGeneralCertificate" parameterType="GeneralCertificate">
 		INSERT
@@ -16,28 +16,34 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 		INSERT general_certificate(sno,gctype,gctime,gcgrade) value
-		<foreach collection="list" item="generalCertificate" open="(" close=")"
-			separator=",">
-			#{generalCertificate.sno},#{generalCertificate.gctype},
-			#{generalCertificate.gctime},#{generalCertificate.gcgrade}
+		<foreach collection="list" item="generalCertificate" separator=",">
+			(#{generalCertificate.sno},#{generalCertificate.gctype},
+			#{generalCertificate.gctime},#{generalCertificate.gcgrade})
 		</foreach>
 	</insert>
 	<select id="selectByTno" parameterType="java.lang.Long"
-		resultType="Credit">
-		SELECT * FROM general_certificate WHERE sno=(
-		SELECT sno FROM student WHERE tfrom (
-		SELECT tfrom FROM teacher WHERE tno=#{tno}
-			)
+		resultType="GeneralCertificate">
+		SELECT * FROM general_certificate WHERE sno in (
+		SELECT sno
+		FROM student WHERE tfrom=#{tno}
 		);
 	</select>
+
+	<select id="selectByGcid" parameterType="java.lang.Long"
+		resultType="GeneralCertificate">
+		SELECT * FROM general_certificate WHERE gcid=#{gcid}
+	</select>
+
 	<update id="updateByGeneralCertificate" parameterType="GeneralCertificate">
-		UPDATE general_certificate SET
+		UPDATE
+		general_certificate SET
 		sno=#{generalCertificate.sno},gctype=#{generalCertificate.gctype},
 		gctime=#{generalCertificate.gctime},gcgrade=#{generalCertificate.gcgrade}
 		WHERE gcid=#{generalCertificate.gcid}
 	</update>
 	<delete id="deleteByGcid" parameterType="GeneralCertificate">
-		DELETE FROM general_certificate
+		DELETE FROM
+		general_certificate
 		WHERE gcid=#{gcid}
 	</delete>
 </mapper>

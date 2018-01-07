@@ -17,4 +17,6 @@ public interface GeneralCertificateService {
 	public int deleteByGcid(long gcid);
 
 	public List<GeneralCertificate> selectByTno(long tno);
+	
+	public GeneralCertificate selectByGcid(long gcid);
 }

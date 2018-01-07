@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 <mapper namespace="com.lzlz.student.record.dao.ProfessCertificateDAO">
 	<insert id="insertByProfessCertificate" parameterType="ProfessCertificate">
 		INSERT
@@ -17,8 +17,8 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 		INSERT profess_certificate(sno,pctype,pctime,pcoffice,pcstate) value
-		<foreach collection="list" item="professCertificate" open="(" close=")"
-			separator=",">
+		<foreach collection="list" item="professCertificate" open="("
+			close=")" separator=",">
 			#{professCertificate.sno},#{professCertificate.pctype},
 			#{professCertificate.pctime},#{professCertificate.pcoffice},
 			#{professCertificate.pcstate}
@@ -26,26 +26,40 @@
 	</insert>
 	<select id="selectByTnoWithNoPass" parameterType="java.lang.Long"
 		resultType="ProfessCertificate">
-		SELECT * FROM profess_certificate WHERE sno=(
-		SELECT sno FROM student WHERE tfrom (
-		SELECT tfrom FROM teacher WHERE tno=#{tno}
-			)
+		SELECT * FROM profess_certificate WHERE sno in (
+		SELECT sno
+		FROM student WHERE tfrom=#{tno}
 		) and pcstate = '未确认';
+	</select>
+	<select id="selectByTnoWithHadPass" parameterType="java.lang.Long"
+		resultType="ProfessCertificate">
+		SELECT * FROM profess_certificate WHERE sno in (
+		SELECT sno
+		FROM student WHERE tfrom=#{tno}
+		) and pcstate = '已确认';
 	</select>
 	<select id="selectBySnoWithAll" parameterType="java.lang.Long"
 		resultType="ProfessCertificate">
 		SELECT * FROM profess_certificate WHERE
-		sno=#{sno} and pcstate = '未确认';
+		sno=#{sno} and
+		pcstate = '未确认';
+	</select>
+	<select id="selectByPcid" parameterType="java.lang.Long"
+		resultType="ProfessCertificate">
+		SELECT * FROM profess_certificate WHERE
+		pcid=#{pcid} and
+		pcstate = '未确认';
 	</select>
 	<update id="updateByProfessCertificate" parameterType="ProfessCertificate">
-		UPDATE profess_certificate SET
-		sno=#{professCertificate.sno},pctype=#{professCertificate.pctype},
-		pctime=#{professCertificate.pctime},pcoffice=#{professCertificate.pcoffice},
+		UPDATE
+		profess_certificate SET
 		pcstate='已确认'
-		WHERE pcid=#{professCertificate.pcid} and pcstate = '未确认';
+		WHERE pcid=#{professCertificate.pcid} and pcstate =
+		'未确认';
 	</update>
 	<delete id="deleteByPcid" parameterType="ProfessCertificate">
-		DELETE FROM profess_certificate
+		DELETE FROM
+		profess_certificate
 		WHERE pcid=#{pcid}
 	</delete>
 </mapper>

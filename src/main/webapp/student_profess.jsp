@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
 <head>
@@ -214,50 +214,53 @@ p {
 			<c:if test="${!empty teacher }">
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">添加学生信息</a></li>
+					href="/Student/selectAllByTno">学生信息管理</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">学生学分情况添加</a></li>
+					href="/Credit/selectByTno">学生学分管理</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">评优奖学（Excel导入）</a></li>
+					href="/Well/selectByTno">评优奖学（Excel导入）</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">通报批评（Excel导入）</a></li>
+					href="/Criticism/selectByTno">通报批评（Excel导入）</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">专业证书添加（Excel导入）</a></li>
+					href="/GeneralCertificate/selectByTno">普通证书添加（Excel导入）</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">教材费结算信息添加</a></li>
+					href="/StudentTextbook/selectByTno">教材费结算信息添加</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">发布公告</a></li>
+					href="/teacher_applyclassroom.jsp">教室申请</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">教室使用批准</a></li>
+					href="/ApplyClassroom/selectByTno">教室使用批准</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">调课</a></li>
+					href="/teacher_adjustlesson.jsp">调课</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书管理</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Activity/selectByTno">活动管理</a></li>
 				<hr>
 			</c:if>
+			<!--学生功能-->
 			<c:if test="${!empty student }">
-				<!--学生功能-->
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="student_infoupdate.jsp">学生信息修改</a></li>
+					href="/StudentTextbook/selectBySnoWithNoPass">教材费确认</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">教材费确认</a></li>
+					href="/student_profess.jsp">职业资格证书添加</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="student_profess.jsp">职业资格证书添加</a></li>
+					href="/student_applyclassroom.jsp">教室使用申请</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="student_applyclassroom.jsp">教室使用申请</a></li>
-				<hr>
-				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">活动申请</a></li>
+					href="/student_activity.jsp">活动申请</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
 					href="#">查看消息</a></li>
@@ -284,7 +287,8 @@ p {
 				</h3>
 				<br>
 				<h3 style="text-align: left; margin-left: 25%; color: #000;">
-					<strong>通过时间</strong><input name="pctime" onfocus="MyCalendar.SetDate(this)"
+					<strong>通过时间</strong><input name="pctime"
+						onfocus="MyCalendar.SetDate(this)"
 						style="height: 40px; border: 1px solid #d1d1d1; border-radius: 20px; margin-left: 20px; margin-top: 10px;"
 						type="text" readonly="readonly">
 				</h3>
@@ -294,7 +298,11 @@ p {
 						style="height: 40px; border: 1px solid #d1d1d1; border-radius: 20px; margin-left: 20px; margin-top: 10px;"
 						type="text">
 				</h3>
-				<br> <input class="bootstrap-frm2" type="submit"> <br>
+				<br>
+				<h3 style="text-align: left; margin-left: 25%; color: #000;">
+					<input class="bootstrap-frm2" type="submit">
+				</h3>
+				<br>
 			</form>
 		</div>
 	</div>

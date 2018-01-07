@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>后台</title>
+<title>模板</title>
 <!-- CSS -->
 
 <link href="../resources/form-3/assets/css/fresh-bootstrap-table.css"
@@ -213,10 +215,10 @@ p {
 				href="/ApplyClassroom/selectByTno">教室使用批准</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="/teacher_adjustlesson.jsp">调课</a></li>
+				href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书管理</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书管理</a></li>
+				href="/teacher_adjustlesson.jsp">调课</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
 				href="/Activity/selectByTno">活动管理</a></li>
@@ -243,146 +245,31 @@ p {
 			</c:if>
 		</ul>
 	</aside>
-	<div id='wrap'>
-		<label id='sideMenuControl' for='sideToggle'>=</label>
-	</div>
-
-	<div>
-		<h1>学生后台</h1>
-		<div style="width: 30%; height: 100%; margin: 0 auto">
-			<form action="/Student/insertByList" method="post"
-				enctype="multipart/form-data">
-				<label>通过excel添加学生信息</label><input
-					style="float: right; margin-top: 30px;" type="file" name="excel">
-					 <input style="float: right;margin-top: 60px;" type="submit" value="提交">
-				
-			</form>
-		</div>
-	</div>
-	<div class="wrapper">
-
-		<div class="container">
-			<div class="row">
-
-				<div class="col-md-8 col-md-offset-2">
-
-					<div style="margin-top: 100px; opacity: 0.76" class="fresh-table ">
-						<!--    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange                  
-                        Available colors only for the toolbar: toolbar-colo	r-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
-                -->
-
-						<table id="fresh-table" class="table">
-							<div class="toolbar">
-								<button class="btn btn-default">返回</button>
-							</div>
-
-							<thead style="">
-								<th>学号</th>
-								<th>姓名</th>
-								<th>性别</th>
-								<th>年级</th>
-								<th>班级</th>
-								<th>专业</th>
-								<th>家庭住址</th>
-								<th>状态</th>
-								<th data-field="actions" data-events="operateEvents">操作</th>
-							</thead>
-							<tbody>
-								<c:forEach items="${studentlist }" var="student">
-									<tr>
-										<td>${student.sno }</td>
-										<td>${student.sname }</td>
-										<td>${student.sgender }</td>
-										<td>${student.sgrade }</td>
-										<td>${student.sclass }</td>
-										<td>${student.sdept }</td>
-										<td>${student.saddress }</td>
-										<td>${student.sstate }</td>
-										<td><a href="/Student/selectBySno?sno=${student.sno }">修改</a>/<a
-											href="/Student/deleteBySno?sno=${student.sno }">删除</a></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
+<div id='wrap'>
+  <label id='sideMenuControl' for='sideToggle'>=</label>
+</div>
+<div>
+  <h1>模板</h1>
+</div>
+<div style="width: 60%;height: 800px;border: 3px solid #d1d1d1;border-radius: 20px;background: #fff; margin: 0 auto;padding-right: 10%;padding-left: 10%;padding-top: 5%;opacity: 0.66; 
+    overflow: auto;">
+ 		<c:forEach items="${activitylist }" var="activity">
+        <p style="text-align: left;color: #000;font-size: 25px;text-overflow: ellipsis;"></p>
+        <br>
+		<hr>
+     </c:forEach>
+     <c:forEach items="${applyroomlist }" var="applyroom">
+        <p style="text-align: left;color: #000;font-size: 25px;text-overflow: ellipsis;"></p>
+        <br>
+		<hr>
+     </c:forEach>
+</div>
 </body>
-<script type="text/javascript"
-	src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript"
-	src="../resources/form-3/assets/js/bootstrap.js"></script>
-<script type="text/javascript"
-	src="../resources/form-3/assets/js/bootstrap-table.js"></script>
-<script type="text/javascript"
-	src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript"
-	src="../resources/form-3/assets/js/bootstrap.js"></script>
-<script type="text/javascript"
-	src="../resources/form-3/assets/js/bootstrap-table.js"></script>
-<script type="text/javascript">
-	var $table = $('#fresh-table'), $alertBtn = $('#alertBtn'), full_screen = false;
-
-	$().ready(function() {
-		$table.bootstrapTable({
-			toolbar : ".toolbar",
-
-			showRefresh : true,
-			search : true,
-			showToggle : true,
-			showColumns : true,
-			pagination : true,
-			striped : true,
-			pageSize : 8,
-			pageList : [ 8, 10, 25, 50, 100 ],
-
-			formatShowingRows : function(pageFrom, pageTo, totalRows) {
-				//do nothing here, we don't want to show the text "showing x of y from..." 
-			},
-			formatRecordsPerPage : function(pageNumber) {
-				return pageNumber + " rows visible";
-			},
-			icons : {
-				refresh : 'fa fa-refresh',
-				toggle : 'fa fa-th-list',
-				columns : 'fa fa-columns',
-				detailOpen : 'fa fa-plus-circle',
-				detailClose : 'fa fa-minus-circle'
-			}
-		});
-
-		$(window).resize(function() {
-			$table.bootstrapTable('resetView');
-		});
-
-		window.operateEvents = {
-			'click .like' : function(e, value, row, index) {
-				alert('You click like icon, row: ' + JSON.stringify(row));
-				console.log(value, row, index);
-			},
-			'click .edit' : function(e, value, row, index) {
-				alert('You click edit icon, row: ' + JSON.stringify(row));
-				console.log(value, row, index);
-			},
-			'click .remove' : function(e, value, row, index) {
-				$table.bootstrapTable('remove', {
-					field : 'id',
-					values : [ row.id ]
-				});
-
-			}
-		};
-
-		$alertBtn.click(function() {
-			alert("You pressed on Alert");
-		});
-
-	});
-</script>
+<script type="text/javascript" src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../resources/form-3/assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../resources/form-3/assets/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../resources/form-3/assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../resources/form-3/assets/js/bootstrap-table.js"></script>
 </html>
-
+</html>

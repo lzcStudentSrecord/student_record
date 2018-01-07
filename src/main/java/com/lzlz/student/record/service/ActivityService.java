@@ -15,6 +15,8 @@ public interface ActivityService {
 
 	public List<Activity> selectAllByNoPass();
 	
+	public List<Activity> selectByTno(long tno);
+	
 	public List<Activity> selectAllByProposer(long sno);
 	
 	public int updateByActivity(Activity activity);

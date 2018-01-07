@@ -46,6 +46,15 @@ public interface WellDAO {
 	public List<Well> selectByTno(@Param("tno") long tno);
 
 	/**
+	 * 通过编号查询一条数据
+	 * 
+	 * @param weid
+	 *            编号
+	 * @return
+	 */
+	public Well selectByWeid(@Param("weid") long weid);
+
+	/**
 	 * 通过编号删除数据
 	 * 
 	 * @param weid

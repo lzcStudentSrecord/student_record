@@ -9,14 +9,14 @@
 			order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
-		INSERT student VALUE
-		<foreach collection="list" item="student" open="(" close=")"
-			separator=",">
-			#{student.sno},#{student.sname},#{student.sgender},
+		INSERT student(sno,sname,sgender,sgrade,sclass,sdept,
+		saddress,sphone,sparent,sparentPhone,sjob,tfrom,sstate) VALUES
+		<foreach collection="list" item="student" separator=",">
+			(#{student.sno},#{student.sname},#{student.sgender},
 			#{student.sgrade},#{student.sclass},
 			#{student.sdept},#{student.saddress},#{student.sphone},
 			#{student.sparent},#{student.sparentPhone},
-			#{student.sjob},#{student.sfrom},#{student.sstate}
+			#{student.sjob},#{student.sfrom},#{student.sstate})
 		</foreach>
 	</insert>
 	

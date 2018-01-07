@@ -54,6 +54,7 @@ public interface ProfessCertificateDAO {
 	 */
 	public List<ProfessCertificate> selectBySnoWithAll(@Param("sno") long sno);
 
+	public List<ProfessCertificate> selectByTnoWithHadPass(@Param("tno") long tno);
 	/**
 	 * 通过老师编号查询所有未申请通过的数据
 	 * 
@@ -62,5 +63,14 @@ public interface ProfessCertificateDAO {
 	 * @return 数据集合
 	 */
 	public List<ProfessCertificate> selectByTnoWithNoPass(@Param("tno") long tno);
+
+	/**
+	 * 通过记录编号删除一条数据
+	 * 
+	 * @param pcid
+	 *            记录编号
+	 * @return
+	 */
+	public ProfessCertificate selectByPcid(@Param("pcid") long pcid);
 
 }
