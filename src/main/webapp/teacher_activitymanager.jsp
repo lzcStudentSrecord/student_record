@@ -7,7 +7,12 @@
 <meta charset="utf-8">
 <title>模板</title>
 <!-- CSS -->
-
+<c:if test="${empty sessionScope.teacher}">
+	<script type="text/javascript">
+		alert("请先登录");
+		location = "index.jsp";
+	</script>
+</c:if>
 <link href="../resources/form-3/assets/css/fresh-bootstrap-table.css"
 	rel="stylesheet" />
 <link rel="stylesheet"
@@ -75,6 +80,7 @@ body>aside {
 	bottom: 0;
 	left: -200px;
 	width: 200px;
+	height:1070px;
 	background: #de615e;
 	transition: 0.2s ease-out;
 	-webkit-transition: 0.2s ease-out;
@@ -186,6 +192,9 @@ p {
 		<h2 style="margin-top: 40px">导航栏</h2>
 		<ul id="lia" style="margin-top: 120px">
 			<!--老师功能-->
+			<hr>
+			<li style="text-align: center"><a style="color: aliceblue"
+					href="Student/adjustList?curpage=1">首页</a></li>
 			<c:if test="${!empty teacher }">
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
@@ -238,7 +247,7 @@ p {
 				href="/student_activity.jsp">活动申请</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">查看消息</a></li>
+				href="/Student/getMessageBySno">查看消息</a></li>
 			<hr>
 			</c:if>
 		</ul>

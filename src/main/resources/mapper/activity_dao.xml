@@ -25,11 +25,13 @@
 	<!-- 给学生们展示用的方法 -->
 	<select id="selectAllByProposer" resultType="Activity">
 		SELECT * FROM
-		activity WHERE proposer=#{sno};
+		activity WHERE proposer=#{sno} and astate='已通过';
 	</select>
 	<select id="selectByTno" resultType="Activity">
-		SELECT * FROM activity WHERE astate='未通过' and
-		proposer in (SELECT sno FROM student WHERE tfrom=#{tno})
+		SELECT * FROM activity WHERE
+		astate='未通过' and
+		proposer in (SELECT sno FROM student WHERE
+		tfrom=#{tno})
 	</select>
 	<update id="updateByActivity" parameterType="Activity">
 		UPDATE activity set

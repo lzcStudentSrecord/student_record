@@ -9,8 +9,12 @@
 		#{reply.rauthor},now()
 		);
 	</insert>
-	<select id="selectByPid" parameterType="java.lang.Long"
+	<select id="selectByPid"
 		resultType="Reply">
-		SELECT * FROM reply WHERE pid = #{pid} ORDER BY rid;
+		SELECT * FROM reply WHERE pid=#{pid} limit #{first},5;
 	</select>
+	<select id="selectByCount" resultType="java.lang.Integer">
+		SELECT count(*) FROM reply;
+	</select>
+
 </mapper>

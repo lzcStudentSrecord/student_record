@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
@@ -7,7 +7,12 @@
 <meta charset="utf-8">
 <title>模板</title>
 <!-- CSS -->
-
+<c:if test="${empty sessionScope.student}">
+	<script type="text/javascript">
+		alert("请先登录");
+		location = "student_login.jsp";
+	</script>
+</c:if>
 <link href="../resources/form-3/assets/css/fresh-bootstrap-table.css"
 	rel="stylesheet" />
 <link rel="stylesheet"
@@ -19,7 +24,8 @@
 <link rel="stylesheet"
 	href="../resources/form-3/assets/css/form-elements.css">
 <link rel="stylesheet" href="../resources/form-3/assets/css/style1.css">
-<link rel="shortcut icon" href="../resources/form-3/assets/ico/favicon.png">
+<link rel="shortcut icon"
+	href="../resources/form-3/assets/ico/favicon.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="../resources/form-3/assets/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
@@ -75,9 +81,11 @@ body>aside {
 	bottom: 0;
 	left: -200px;
 	width: 200px;
+	height: 710px;
 	background: #de615e;
 	transition: 0.2s ease-out;
 	-webkit-transition: 0.2s ease-out;
+	background: #de615e;
 }
 
 body>aside>h2 {
@@ -186,83 +194,98 @@ p {
 		<h2 style="margin-top: 40px">导航栏</h2>
 		<ul id="lia" style="margin-top: 120px">
 			<!--老师功能-->
+			<hr>
+			<li style="text-align: center"><a style="color: aliceblue"
+				href="Student/adjustList?curpage=1">首页</a></li>
 			<c:if test="${!empty teacher }">
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Student/selectAllByTno">学生信息管理</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Credit/selectByTno">学生学分管理</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Well/selectByTno">评优奖学（Excel导入）</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Criticism/selectByTno">通报批评（Excel导入）</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/GeneralCertificate/selectByTno">普通证书添加（Excel导入）</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/StudentTextbook/selectByTno">教材费结算信息添加</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/teacher_applyclassroom.jsp">教室申请</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/ApplyClassroom/selectByTno">教室使用批准</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书管理</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/teacher_adjustlesson.jsp">调课</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Activity/selectByTno">活动管理</a></li>
-			<hr>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Student/selectAllByTno">学生信息管理</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Credit/selectByTno">学生学分管理</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Well/selectByTno">评优奖学（Excel导入）</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Criticism/selectByTno">通报批评（Excel导入）</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/GeneralCertificate/selectByTno">普通证书添加（Excel导入）</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/StudentTextbook/selectByTno">教材费结算信息添加</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/teacher_applyclassroom.jsp">教室申请</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/ApplyClassroom/selectByTno">教室使用批准</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书管理</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/teacher_adjustlesson.jsp">调课</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Activity/selectByTno">活动管理</a></li>
+				<hr>
 			</c:if>
 			<!--学生功能-->
 			<c:if test="${!empty student }">
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/StudentTextbook/selectBySnoWithNoPass">教材费确认</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/student_profess.jsp">职业资格证书添加</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/student_applyclassroom.jsp">教室使用申请</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/student_activity.jsp">活动申请</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">查看消息</a></li>
-			<hr>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_infoupdate.jsp">个人信息修改</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/StudentTextbook/selectBySnoWithNoPass">教材费确认</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_profess.jsp">职业资格证书添加</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_applyclassroom.jsp">教室使用申请</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_activity.jsp">活动申请</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Student/getMessageBySno">查看消息</a></li>
+				<hr>
 			</c:if>
 		</ul>
 	</aside>
-<div id='wrap'>
-  <label id='sideMenuControl' for='sideToggle'>=</label>
-</div>
-<div>
-  <h1>模板</h1>
-</div>
-<div style="width: 60%;height: 800px;border: 3px solid #d1d1d1;border-radius: 20px;background: #fff; margin: 0 auto;padding-right: 10%;padding-left: 10%;padding-top: 5%;opacity: 0.66; 
-    overflow: auto;">
- 		<c:forEach items="${stutextbookManagerlist }" var="stutb">
-        <p style="text-align: left;color: #000;font-size: 25px;text-overflow: ellipsis;"><a href="../StudentTextbook/selectByStno?stno=${stutb.stno }">你的教材:"${stutb.tbname }"的费用需要确认</a></p>
-        <br>
-		<hr>
-     </c:forEach>
-</div>
+	<div id='wrap'>
+		<label id='sideMenuControl' for='sideToggle'>=</label>
+	</div>
+	<div>
+		<h1>模板</h1>
+	</div>
+	<div
+		style="width: 60%; height: 800px; border: 3px solid #d1d1d1; border-radius: 20px; background: #fff; margin: 0 auto; padding-right: 10%; padding-left: 10%; padding-top: 5%; opacity: 0.66; overflow: auto;">
+		<c:forEach items="${stutextbookManagerlist }" var="stutb">
+			<p
+				style="text-align: left; color: #000; font-size: 25px; text-overflow: ellipsis;">
+				<a href="../StudentTextbook/selectByStno?stno=${stutb.stno }">你的教材:"${stutb.tbname }"的费用需要确认</a>
+			</p>
+			<br>
+			<hr>
+		</c:forEach>
+	</div>
 </body>
-<script type="text/javascript" src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="../resources/form-3/assets/js/bootstrap.js"></script>
-<script type="text/javascript" src="../resources/form-3/assets/js/bootstrap-table.js"></script>
-<script type="text/javascript" src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="../resources/form-3/assets/js/bootstrap.js"></script>
-<script type="text/javascript" src="../resources/form-3/assets/js/bootstrap-table.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/bootstrap.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/bootstrap-table.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/bootstrap.js"></script>
+<script type="text/javascript"
+	src="../resources/form-3/assets/js/bootstrap-table.js"></script>
 </html>
 </html>

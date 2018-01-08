@@ -23,5 +23,11 @@ public interface ReplyDAO {
 	 *            主题帖id
 	 * @return 数据集合
 	 */
-	public List<Reply> selectByPid(@Param("pid") long pid);
+	public List<Reply> selectByPid(@Param("pid") long pid,@Param("first") int first);
+	/**
+	 * 查询所有个数
+	 * @return
+	 */
+	public int selectByCount();
+	
 }

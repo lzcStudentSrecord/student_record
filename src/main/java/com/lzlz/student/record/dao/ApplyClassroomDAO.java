@@ -35,6 +35,15 @@ public interface ApplyClassroomDAO {
 	public List<ApplyClassroom> selectByTno(@Param("tno") long tno);
 
 	/**
+	 * 通过学生查询已通过的教室申请
+	 * 
+	 * @param sno
+	 *            学号
+	 * @return
+	 */
+	public List<ApplyClassroom> selectBySno(@Param("sno") long sno);
+
+	/**
 	 * 通过记录编号查询一条记录
 	 * 
 	 * @param acid
@@ -51,4 +60,12 @@ public interface ApplyClassroomDAO {
 	 * @return
 	 */
 	public int updateByAcid(@Param("acid") long acid);
+
+	/**
+	 * 通过记录编号删除一条数据
+	 * 
+	 * @param acid记录编号
+	 * @return
+	 */
+	public int deleteByAcid(@Param("acid") long acid);
 }

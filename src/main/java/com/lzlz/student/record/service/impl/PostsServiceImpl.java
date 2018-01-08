@@ -28,4 +28,19 @@ public class PostsServiceImpl implements PostsService {
 		return postsDAO.selectAll();
 	}
 
+	@Override
+	public Posts selectByPid(long pid) {
+		return postsDAO.selectByPid(pid);
+	}
+
+	@Override
+	public List<Posts> selectByFenYe(int first) {
+		return postsDAO.selectByFenYe(first);
+	}
+
+	@Override
+	public int selectCount() {
+		return postsDAO.selectCount();
+	}
+
 }

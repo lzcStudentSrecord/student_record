@@ -8,7 +8,7 @@
 <title>模板</title>
 <!-- CSS -->
 <!-- CSS -->
-<c:if test="${empty teacher }">
+<c:if test="${empty sessionScope.teacher}">
 	<script type="text/javascript">
 		alert("请先登录");
 		location = "teacher_login.jsp";
@@ -17,7 +17,7 @@
 <c:if test="${empty updatestudent }">
 	<script type="text/javascript">
 		alert("请通过正确的方式访问");
-		location = "teacher_login.jsp";
+		location = "teacher_stumanager.jsp";
 	</script>
 </c:if>
 
@@ -93,6 +93,7 @@ body>aside {
 	bottom: 0;
 	left: -200px;
 	width: 200px;
+	height:1070px;
 	background: #de615e;
 	transition: 0.2s ease-out;
 	-webkit-transition: 0.2s ease-out;
@@ -219,6 +220,9 @@ p {
 		<h2 style="margin-top: 40px">导航栏</h2>
 		<ul id="lia" style="margin-top: 120px">
 			<!--老师功能-->
+			<hr>
+			<li style="text-align: center"><a style="color: aliceblue"
+					href="Student/adjustList?curpage=1">首页</a></li>
 			<c:if test="${!empty teacher }">
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
@@ -271,7 +275,7 @@ p {
 				href="/student_activity.jsp">活动申请</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">查看消息</a></li>
+				href="/Student/getMessageBySno">查看消息</a></li>
 			<hr>
 			</c:if>
 		</ul>
@@ -302,6 +306,7 @@ p {
 						type="text">
 				</h3>
 				<br>
+				<h3 style="text-align: left; margin-left: 25%; color: #000;">
 				<section>
 					<label>性别:</label>
 					<div style="margin-top: 20px;" class="pretty circle">
@@ -315,6 +320,7 @@ p {
 						<label><i class="default"></i>女</label>
 					</div>
 				</section>
+				</h3>
 				<br>
 				<h3 style="text-align: left; margin-left: 25%; color: #000;">
 					<strong>年级</strong><input name="sgrade"
@@ -384,7 +390,8 @@ p {
 							<c:if test="${updatestudent.sstate eq '退学'}">selected="selected"</c:if>>退学</option>
 					</select>
 				</h3>
-				<br> <input class="bootstrap-frm2" type="submit"> <br>
+				<br> 
+				<h3 style="text-align: left; margin-left: 25%; color: #000;"><input class="bootstrap-frm2" type="submit"></h3> <br>
 			</form>
 		</div>
 	</div>

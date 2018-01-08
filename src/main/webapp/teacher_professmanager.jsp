@@ -6,18 +6,22 @@
 <head>
 <meta charset="utf-8">
 <title>后台</title>
-<!-- CSS -->
-
-<link href="../../resources/form-3/assets/css/fresh-bootstrap-table.css"
+<c:if test="${empty sessionScope.teacher}">
+	<script type="text/javascript">
+		alert("请先登录");
+		location = "index.jsp";
+	</script>
+</c:if>
+<link href="../resources/form-3/assets/css/fresh-bootstrap-table.css"
 	rel="stylesheet" />
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 <link rel="stylesheet"
-	href="../../resources/form-3/assets/bootstrap/css/bootstrap.min.css">
+	href="../resources/form-3/assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="../../resources/form-3/assets/font-awesome/css/font-awesome.min.css">
+	href="../resources/form-3/assets/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet"
-	href="../../resources/form-3/assets/css/form-elements.css">
+	href="../resources/form-3/assets/css/form-elements.css">
 <link rel="stylesheet" href="../../resources/form-3/assets/css/style1.css">
 <link rel="shortcut icon" href="../../resources/form-3/assets/ico/favicon.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
@@ -75,6 +79,7 @@ body>aside {
 	bottom: 0;
 	left: -200px;
 	width: 200px;
+	height:1070px;
 	background: #de615e;
 	transition: 0.2s ease-out;
 	-webkit-transition: 0.2s ease-out;
@@ -186,6 +191,9 @@ p {
 		<h2 style="margin-top: 40px">导航栏</h2>
 		<ul id="lia" style="margin-top: 120px">
 			<!--老师功能-->
+			<hr>
+			<li style="text-align: center"><a style="color: aliceblue"
+					href="Student/adjustList?curpage=1">首页</a></li>
 			<c:if test="${!empty teacher }">
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
@@ -238,7 +246,7 @@ p {
 				href="/student_activity.jsp">活动申请</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">查看消息</a></li>
+				href="/Student/getMessageBySno">查看消息</a></li>
 			<hr>
 			</c:if>
 		</ul>

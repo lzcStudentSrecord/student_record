@@ -84,9 +84,37 @@ public class ApplyClassroomController {
 		}
 		int ret = applyClassroomService.updateByAcid(acid);
 		if (ret != 0)
+			request.setAttribute("ret", 9);
+		else
+			request.setAttribute("ret", 11);
+		return "retprocess";
+	}
+
+	@RequestMapping(value = "/deleteByAcid", method = RequestMethod.GET)
+	public String deleteByAcid(long acid, HttpServletRequest request, HttpSession session) {
+		Teacher t = (Teacher) session.getAttribute("teacher");
+		if (t == null) {
+			request.setAttribute("ret", -1);
+			return "retprocess";
+		}
+		ApplyClassroom applyClassroom = applyClassroomService.selectByAcid(acid);
+		Student student = studentService.getStudentBySno(applyClassroom.getProposer());
+		if (t.getTfrom() != student.getTfrom()) {
+			request.setAttribute("ret", -1);
+			return "retprocess";
+		}
+		int ret = applyClassroomService.deleteByAcid(acid);
+		if (ret != 0)
 			request.setAttribute("ret", 12);
 		else
 			request.setAttribute("ret", 13);
 		return "retprocess";
+	}
+
+	@RequestMapping(value = "/selectByAcid", method = RequestMethod.GET)
+	public String selectByAcid(@RequestParam("acid") int acid, HttpServletRequest request) {
+		ApplyClassroom applyClassroom = applyClassroomService.selectByAcid(acid);
+		request.setAttribute("applyinfo", applyClassroom);
+		return "applyinfo";
 	}
 }

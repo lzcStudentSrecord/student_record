@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lzlz.student.record.entiy.AdjustLesson;
@@ -36,8 +37,10 @@ public class AdjustLessonController {
 		return "retprocess";
 	}
 
-	@RequestMapping(value = "/selectAllBySno", method = RequestMethod.GET)
-	public @ResponseBody List<AdjustLesson> selectAllBySno() {
-		return adjustLessonService.selectAllBySno(9901);
+	@RequestMapping(value = "/selectByAlno", method = RequestMethod.GET)
+	public String selectByAlno(@RequestParam("alno") long alno, HttpServletRequest request) {
+		AdjustLesson adjustLesson = adjustLessonService.selectByAlno(alno);
+		request.setAttribute("adjustinfo", adjustLesson);
+		return "adjustinfo";
 	}
 }

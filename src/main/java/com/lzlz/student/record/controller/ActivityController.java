@@ -43,7 +43,7 @@ public class ActivityController {
 			request.setAttribute("ret", 7);
 		else
 			request.setAttribute("ret", 8);
-		return "retprocess.jsp";
+		return "retprocess";
 	}
 
 	@RequestMapping("/updateByTeacher")

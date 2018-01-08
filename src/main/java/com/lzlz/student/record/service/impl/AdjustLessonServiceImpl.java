@@ -28,4 +28,14 @@ public class AdjustLessonServiceImpl implements AdjustLessonService {
 		return adjustLessonDAO.selectAllBySno(sno);
 	}
 
+	@Override
+	public List<AdjustLesson> selectAll() {
+		return adjustLessonDAO.selectAll();
+	}
+
+	@Override
+	public AdjustLesson selectByAlno(long alno) {
+		return adjustLessonDAO.selectByAlno(alno);
+	}
+
 }

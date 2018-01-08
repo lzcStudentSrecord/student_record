@@ -64,8 +64,8 @@
 					<div class="col-sm-6 col-sm-offset-3 form-box">
 						<div class="form-top">
 							<div class="form-top-left">
-								<h3>欢迎来到后台管理系统</h3>
-								<p>请输入正确的用户名和密码登录:</p>
+								<h3></h3>
+								<p></p>
 							</div>
 							<div class="form-top-right">
 								<i class="fa fa-lock"></i>

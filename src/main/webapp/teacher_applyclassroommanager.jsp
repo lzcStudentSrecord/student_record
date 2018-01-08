@@ -7,7 +7,12 @@
 <meta charset="utf-8">
 <title>后台</title>
 <!-- CSS -->
-
+<c:if test="${empty sessionScope.teacher}">
+	<script type="text/javascript">
+		alert("请先登录");
+		location = "index.jsp";
+	</script>
+</c:if>
 <link href="../resources/form-3/assets/css/fresh-bootstrap-table.css"
 	rel="stylesheet" />
 <link rel="stylesheet"
@@ -19,7 +24,8 @@
 <link rel="stylesheet"
 	href="../resources/form-3/assets/css/form-elements.css">
 <link rel="stylesheet" href="../resources/form-3/assets/css/style1.css">
-<link rel="shortcut icon" href="../resources/form-3/assets/ico/favicon.png">
+<link rel="shortcut icon"
+	href="../resources/form-3/assets/ico/favicon.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="../resources/form-3/assets/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
@@ -75,6 +81,7 @@ body>aside {
 	bottom: 0;
 	left: -200px;
 	width: 200px;
+	height: 1070px;
 	background: #de615e;
 	transition: 0.2s ease-out;
 	-webkit-transition: 0.2s ease-out;
@@ -186,60 +193,63 @@ p {
 		<h2 style="margin-top: 40px">导航栏</h2>
 		<ul id="lia" style="margin-top: 120px">
 			<!--老师功能-->
+			<hr>
+			<li style="text-align: center"><a style="color: aliceblue"
+				href="Student/adjustList?curpage=1">首页</a></li>
 			<c:if test="${!empty teacher }">
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Student/selectAllByTno">学生信息管理</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Credit/selectByTno">学生学分管理</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Well/selectByTno">评优奖学（Excel导入）</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Criticism/selectByTno">通报批评（Excel导入）</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/GeneralCertificate/selectByTno">普通证书添加（Excel导入）</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/StudentTextbook/selectByTno">教材费结算信息添加</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/teacher_applyclassroom.jsp">教室申请</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/ApplyClassroom/selectByTno">教室使用批准</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/teacher_adjustlesson.jsp">调课</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书管理</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/Activity/selectByTno">活动管理</a></li>
-			<hr>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Student/selectAllByTno">学生信息管理</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Credit/selectByTno">学生学分管理</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Well/selectByTno">评优奖学（Excel导入）</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Criticism/selectByTno">通报批评（Excel导入）</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/GeneralCertificate/selectByTno">普通证书添加（Excel导入）</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/StudentTextbook/selectByTno">教材费结算信息添加</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/teacher_applyclassroom.jsp">教室申请</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/ApplyClassroom/selectByTno">教室使用批准</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/teacher_adjustlesson.jsp">调课</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/ProfessCertificate/selectByTnoWithHadPass">职业资格书管理</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Activity/selectByTno">活动管理</a></li>
+				<hr>
 			</c:if>
 			<!--学生功能-->
 			<c:if test="${!empty student }">
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/StudentTextbook/selectBySnoWithNoPass">教材费确认</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/student_profess.jsp">职业资格证书添加</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/student_applyclassroom.jsp">教室使用申请</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="/student_activity.jsp">活动申请</a></li>
-			<hr>
-			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">查看消息</a></li>
-			<hr>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/StudentTextbook/selectBySnoWithNoPass">教材费确认</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_profess.jsp">职业资格证书添加</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_applyclassroom.jsp">教室使用申请</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_activity.jsp">活动申请</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
+					href="/Student/getMessageBySno">查看消息</a></li>
+				<hr>
 			</c:if>
 		</ul>
 	</aside>
@@ -249,8 +259,7 @@ p {
 
 	<div>
 		<h1>学生后台</h1>
-		<div style="width: 30%; height: 100%; margin: 0 auto">
-		</div>
+		<div style="width: 30%; height: 100%; margin: 0 auto"></div>
 	</div>
 	<div class="wrapper">
 
@@ -285,7 +294,9 @@ p {
 										<td>${applyClassroom.craddress }</td>
 										<td>${applyClassroom.startTime }</td>
 										<td>${applyClassroom.endTime }</td>
-										<td><a href="/ApplyClassroom/updateByAcid?acid=${applyClassroom.acid }">通过</a>
+										<td><a
+											href="/ApplyClassroom/updateByAcid?acid=${applyClassroom.acid }">通过</a>/<a
+											href="/ApplyClassroom/deleteByAcid?acid=${applyClassroom.acid }">拒绝</a>
 									</tr>
 								</c:forEach>
 							</tbody>

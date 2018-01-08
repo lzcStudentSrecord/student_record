@@ -8,7 +8,7 @@
 <title>模板</title>
 <!-- CSS -->
 <!-- CSS -->
-<c:if test="${empty teacher}">
+<c:if test="${empty sessionScope.teacher}">
 	<script type="text/javascript">
 		alert("请先登录");
 		location = "index.jsp";
@@ -17,7 +17,7 @@
 <c:if test="${empty activityupdate}">
 	<script type="text/javascript">
 		alert("请通过正确的方式访问");
-		location = "index.jsp";
+		location = "teacher_stumanager.jsp";
 	</script>
 </c:if>
 <link href="../resources/form-3/assets/css/fresh-bootstrap-table.css"
@@ -92,6 +92,7 @@ body>aside {
 	bottom: 0;
 	left: -200px;
 	width: 200px;
+	height:1070px;
 	background: #de615e;
 	transition: 0.2s ease-out;
 	-webkit-transition: 0.2s ease-out;
@@ -218,6 +219,9 @@ p {
 		<h2 style="margin-top: 40px">导航栏</h2>
 		<ul id="lia" style="margin-top: 120px">
 			<!--老师功能-->
+			<hr>
+			<li style="text-align: center"><a style="color: aliceblue"
+					href="Student/adjustList?curpage=1">首页</a></li>
 			<c:if test="${!empty teacher }">
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
@@ -270,7 +274,7 @@ p {
 				href="/student_activity.jsp">活动申请</a></li>
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="#">查看消息</a></li>
+				href="/Student/getMessageBySno">查看消息</a></li>
 			<hr>
 			</c:if>
 		</ul>
@@ -301,10 +305,12 @@ p {
 						style="height: 40px; border: 1px solid #d1d1d1; border-radius: 20px; margin-left: 20px; margin-top: 10px;"
 						type="text" readonly="readonly">
 				</h3>
-				<br> <strong>活动内容</strong><br>
-				<textarea name="acontent" class="bootstrap-frm1" readonly="readonly">${activityupdate.acontent }</textarea>
-				<br> <strong>活动作用</strong><br>
-				<textarea name="aaffect" class="bootstrap-frm1" readonly="readonly">${activityupdate.aaffect }</textarea>
+				<br> 
+				<h3 style="text-align: left; margin-left: 25%; color: #000;"><strong>活动内容</strong><br>
+				<textarea name="acontent" class="bootstrap-frm1" readonly="readonly">${activityupdate.acontent }</textarea></h3>
+				<br>
+				<h3 style="text-align: left; margin-left: 25%; color: #000;"> <strong>活动作用</strong><br>
+				<textarea name="aaffect" class="bootstrap-frm1" readonly="readonly">${activityupdate.aaffect }</textarea></h3>
 				<br> <input class="bootstrap-frm2" type="submit"> <br>
 			</form>
 		</div>

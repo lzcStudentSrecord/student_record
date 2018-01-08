@@ -43,4 +43,14 @@ public class ApplyClassroomServiceImpl implements ApplyClassroomService {
 		return applyClassroomDAO.updateByAcid(acid);
 	}
 
+	@Override
+	public List<ApplyClassroom> selectBySno(long sno) {
+		return applyClassroomDAO.selectBySno(sno);
+	}
+
+	@Override
+	public int deleteByAcid(long acid) {
+		return applyClassroomDAO.deleteByAcid(acid);
+	}
+
 }

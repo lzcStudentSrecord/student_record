@@ -6,7 +6,7 @@
 	<insert id="insertByAdjustLesson" parameterType="AdjustLesson">
 		INSERT
 		adjustlesson value(
-		#{adjustLesson.tno},#{adjustLesson.reason},
+		null,#{adjustLesson.tno},#{adjustLesson.reason},
 		#{adjustLesson.course},#{adjustLesson.oldtime},
 		#{adjustLesson.oldaddress},#{adjustLesson.newtime},
 		#{adjustLesson.newaddress}
@@ -17,5 +17,12 @@
 				SELECT tfrom FROM teacher WHERE teacher.tno=adjustlesson.tno
 			)
 		);
+	</select>
+	<select id="selectAll" resultType="AdjustLesson">
+		SELECT * FROM adjustlesson order by alno asc;
+	</select>
+	
+	<select id="selectByAlno" resultType="AdjustLesson">
+		SELECT * FROM adjustlesson where alno=#{alno} order by alno asc;
 	</select>
 </mapper>

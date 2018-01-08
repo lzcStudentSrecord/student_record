@@ -1,23 +1,28 @@
 package com.lzlz.student.record.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.lzlz.student.record.entiy.Activity;
+import com.lzlz.student.record.entiy.AdjustLesson;
+import com.lzlz.student.record.entiy.ApplyClassroom;
+import com.lzlz.student.record.entiy.Posts;
 import com.lzlz.student.record.entiy.Student;
 import com.lzlz.student.record.entiy.Teacher;
+import com.lzlz.student.record.service.ActivityService;
+import com.lzlz.student.record.service.AdjustLessonService;
+import com.lzlz.student.record.service.ApplyClassroomService;
+import com.lzlz.student.record.service.PostsService;
 import com.lzlz.student.record.service.StudentService;
 import com.lzlz.student.record.util.CustomerUtil;
 import com.lzlz.student.record.util.ExcelProcess;
@@ -26,10 +31,34 @@ import com.lzlz.student.record.util.ExcelProcess;
 @RequestMapping("/Student")
 public class StudentController {
 	private StudentService studentService;
+	private ApplyClassroomService applyClassroomService;
+	private ActivityService activityService;
+	private AdjustLessonService adjustLessonService;
+	private PostsService postsService;
 
 	@Autowired
 	public void setStudentService(StudentService studentService) {
 		this.studentService = studentService;
+	}
+
+	@Autowired
+	public void setApplyClassroomService(ApplyClassroomService applyClassroomService) {
+		this.applyClassroomService = applyClassroomService;
+	}
+
+	@Autowired
+	public void setActivityService(ActivityService activityService) {
+		this.activityService = activityService;
+	}
+
+	@Autowired
+	public void setAdjustLessonService(AdjustLessonService adjustLessonService) {
+		this.adjustLessonService = adjustLessonService;
+	}
+
+	@Autowired
+	public void setPostsService(PostsService postsService) {
+		this.postsService = postsService;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -82,9 +111,10 @@ public class StudentController {
 	}
 
 	@RequestMapping(value = "/updateByTeacher", method = RequestMethod.POST)
-	public String updateByTeacher(Student student, HttpServletRequest request, HttpSession session) {
-		student.setTfrom(((Teacher) session.getAttribute("teacher")).getTfrom());
-		int ret = studentService.updateByStudent(student);
+	public String updateByTeacher(Student stu1, HttpServletRequest request, HttpSession session) {
+		stu1.setTfrom(((Teacher) session.getAttribute("teacher")).getTfrom());
+		System.out.println((Student) session.getAttribute("student"));
+		int ret = studentService.updateByStudent(stu1);
 		if (ret != 0)
 			request.setAttribute("ret", 4);
 		else
@@ -148,5 +178,67 @@ public class StudentController {
 		List<Student> list = studentService.selectAllByTno(t.getTfrom());
 		request.setAttribute("studentlist", list);
 		return "teacher_stumanager";
+	}
+
+	@RequestMapping(value = "/getMessageBySno", method = RequestMethod.GET)
+	public String getMessageBySno(HttpServletRequest request, HttpSession session) {
+		Student student = (Student) session.getAttribute("student");
+		if (student == null) {
+			request.setAttribute("ret", -1);
+			return "retprocess";
+		}
+		List<Activity> activitylist = activityService.selectAllByProposer(student.getSno());
+		List<ApplyClassroom> applyroomlist = applyClassroomService.selectBySno(student.getSno());
+		request.setAttribute("activitylist", activitylist);
+		request.setAttribute("applyroomlist", applyroomlist);
+		return "student_messagelist";
+	}
+
+	@RequestMapping(value = "/newlist", method = RequestMethod.GET)
+	public String goHome(HttpServletRequest request) {
+		List<AdjustLesson> adjustlist = adjustLessonService.selectAll();
+		List<ApplyClassroom> applylist = applyClassroomService.selectByToday();
+		request.setAttribute("adjustlist", adjustlist);
+		request.setAttribute("applylist", applylist);
+		return "newslist";
+	}
+
+	@RequestMapping(value = "/adjustList", method = RequestMethod.GET)
+	public String adjustList(@RequestParam("curpage") int curpage, HttpServletRequest request) {
+		List<AdjustLesson> alist = adjustLessonService.selectAll();
+		if (alist.size() == 0) {
+			alist = null;
+		} else if (alist.size() < 5) {
+			alist = alist.subList(0, alist.size());
+		} else {
+			alist = alist.subList(0, 5);
+		}
+		List<Posts> plist = postsService.selectByFenYe(CustomerUtil.getFirstValue(curpage, 5));
+		request.setAttribute("curpage", curpage);
+		request.setAttribute("allpage", CustomerUtil.getPageByCount(postsService.selectCount(), 5));
+		request.setAttribute("plist", plist);
+		request.setAttribute("applylistbyfour", null);
+		request.setAttribute("adjustlistbyfour", alist);
+		return "home";
+	}
+
+	@RequestMapping(value = "/applyList", method = RequestMethod.GET)
+	public String applyList(@RequestParam("curpage") int curpage, HttpServletRequest request) {
+
+		List<ApplyClassroom> alist = applyClassroomService.selectByToday();
+		if (alist.size() == 0) {
+			alist = null;
+		} else if (alist.size() < 5) {
+			alist = alist.subList(0, alist.size());
+		} else {
+			alist = alist.subList(0, 5);
+		}
+		List<Posts> plist = postsService.selectByFenYe(CustomerUtil.getFirstValue(curpage, 5));
+		request.setAttribute("curpage", curpage);
+		request.setAttribute("allpage", CustomerUtil.getPageByCount(postsService.selectCount(), 5));
+		request.setAttribute("plist", plist);
+		request.setAttribute("adjustlistbyfour", null);
+		request.setAttribute("applylistbyfour", alist);
+		return "home";
 	}
 }

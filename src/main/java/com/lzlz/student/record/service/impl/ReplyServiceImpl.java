@@ -24,8 +24,13 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<Reply> selectByPid(long pid) {
-		return replyDAO.selectByPid(pid);
+	public List<Reply> selectByPid(long pid,int first) {
+		return replyDAO.selectByPid(pid,first);
+	}
+
+	@Override
+	public int selectByCount() {
+		return replyDAO.selectByCount();
 	}
 
 }

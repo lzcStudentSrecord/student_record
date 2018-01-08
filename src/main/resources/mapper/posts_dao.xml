@@ -9,8 +9,21 @@
 		#{posts.ptitle},#{posts.pcontent},#{posts.pauthor},now()
 		);
 	</insert>
-	
+
 	<select id="selectAll" resultType="Posts">
 		SELECT * FROM POSTS
+	</select>
+	<select id="selectByPid" parameterType="java.lang.Long"
+		resultType="Posts">
+		SELECT * FROM posts WHERE pid=#{pid}
+	</select>
+
+	<select id="selectByFenYe" parameterType="java.lang.Integer"
+		resultType="Posts">
+		SELECT * FROM posts order by pid asc limit #{first},5;
+	</select>
+
+	<select id="selectCount" resultType="java.lang.Integer">
+		SELECT count(*) FROM posts;
 	</select>
 </mapper>

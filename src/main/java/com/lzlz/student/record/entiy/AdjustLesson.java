@@ -1,6 +1,7 @@
 package com.lzlz.student.record.entiy;
 
 public class AdjustLesson {
+	private long alno;
 	private long tno;
 	private String reason;
 	private String course;
@@ -13,9 +14,10 @@ public class AdjustLesson {
 		super();
 	}
 
-	public AdjustLesson(long tno, String reason, String course, String oldtime, String oldaddress, String newtime,
-			String newaddress) {
+	public AdjustLesson(long alno, long tno, String reason, String course, String oldtime, String oldaddress,
+			String newtime, String newaddress) {
 		super();
+		this.alno = alno;
 		this.tno = tno;
 		this.reason = reason;
 		this.course = course;
@@ -23,6 +25,14 @@ public class AdjustLesson {
 		this.oldaddress = oldaddress;
 		this.newtime = newtime;
 		this.newaddress = newaddress;
+	}
+
+	public long getAlno() {
+		return alno;
+	}
+
+	public void setAlno(long alno) {
+		this.alno = alno;
 	}
 
 	public long getTno() {
@@ -83,8 +93,9 @@ public class AdjustLesson {
 
 	@Override
 	public String toString() {
-		return "Adjustlesson [tno=" + tno + ", reason=" + reason + ", course=" + course + ", oldtime=" + oldtime
-				+ ", oldaddress=" + oldaddress + ", newtime=" + newtime + ", newaddress=" + newaddress + "]";
+		return "AdjustLesson [alno=" + alno + ", tno=" + tno + ", reason=" + reason + ", course=" + course
+				+ ", oldtime=" + oldtime + ", oldaddress=" + oldaddress + ", newtime=" + newtime + ", newaddress="
+				+ newaddress + "]";
 	}
 
 }

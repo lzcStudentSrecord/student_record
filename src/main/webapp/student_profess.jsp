@@ -6,10 +6,10 @@
 <head>
 <meta charset="utf-8">
 <title>职业资格证书申请</title>
-<c:if test="${empty student}">
+<c:if test="${empty sessionScope.student}">
 	<script type="text/javascript">
 		alert("请先登录");
-		location = "index.jsp";
+		location = "student_login.jsp";
 	</script>
 </c:if>
 
@@ -85,6 +85,7 @@ body>aside {
 	bottom: 0;
 	left: -200px;
 	width: 200px;
+	height: 710px;
 	background: #de615e;
 	transition: 0.2s ease-out;
 	-webkit-transition: 0.2s ease-out;
@@ -211,6 +212,9 @@ p {
 		<h2 style="margin-top: 40px">导航栏</h2>
 		<ul id="lia" style="margin-top: 120px">
 			<!--老师功能-->
+			<hr>
+			<li style="text-align: center"><a style="color: aliceblue"
+				href="Student/adjustList?curpage=1">首页</a></li>
 			<c:if test="${!empty teacher }">
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
@@ -251,6 +255,9 @@ p {
 			<c:if test="${!empty student }">
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
+					href="/student_infoupdate.jsp">个人信息修改</a></li>
+				<hr>
+				<li style="text-align: center"><a style="color: aliceblue"
 					href="/StudentTextbook/selectBySnoWithNoPass">教材费确认</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
@@ -263,7 +270,7 @@ p {
 					href="/student_activity.jsp">活动申请</a></li>
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"
-					href="#">查看消息</a></li>
+					href="/Student/getMessageBySno">查看消息</a></li>
 				<hr>
 			</c:if>
 		</ul>

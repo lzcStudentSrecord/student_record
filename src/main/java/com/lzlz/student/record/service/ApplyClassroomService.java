@@ -12,10 +12,14 @@ public interface ApplyClassroomService {
 	public List<ApplyClassroom> selectByToday();
 
 	public int insertByApplyClassroom(ApplyClassroom applyClassroom);
-	
+
 	public List<ApplyClassroom> selectByTno(long tno);
-	
+
+	public List<ApplyClassroom> selectBySno(long sno);
+
 	public ApplyClassroom selectByAcid(long acid);
-	
+
 	public int updateByAcid(long acid);
+	
+	public int deleteByAcid(long acid);
 }
