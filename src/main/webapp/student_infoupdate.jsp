@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>模板</title>
+<title>个人信息修改</title>
 <!-- CSS -->
 <c:if test="${empty sessionScope.student}">
 	<script type="text/javascript">

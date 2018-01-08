@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>模板</title>
+<title>调课详情</title>
 <!-- CSS -->
 <!-- CSS -->
 <link href="../resources/form-3/assets/css/fresh-bootstrap-table.css"

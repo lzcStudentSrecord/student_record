@@ -28,7 +28,7 @@ public interface GeneralCertificateDAO {
 	public int insertByList(@Param("list") List<GeneralCertificate> list);
 
 	/**
-	 * 通过GeneralCertificate对象修改数据
+	 * 通过GeneralCertificate对象修改数据(暂时不用)
 	 * 
 	 * @param generalCertificate
 	 *            关系映射的对象

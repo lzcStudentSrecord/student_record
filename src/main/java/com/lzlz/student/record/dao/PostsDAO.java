@@ -23,7 +23,7 @@ public interface PostsDAO {
 	 */
 	public int selectCount();
 	/**
-	 * 查询所有的主题帖
+	 * 查询所有的主题帖(暂时不用)
 	 * 
 	 * @return 数据集合
 	 */

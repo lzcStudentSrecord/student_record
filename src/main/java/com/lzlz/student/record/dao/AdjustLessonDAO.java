@@ -19,7 +19,7 @@ public interface AdjustLessonDAO {
 	public int insertByAdjustLesson(@Param("adjustLesson") AdjustLesson adjustLesson);
 
 	/**
-	 * 通过学号查询所有数据
+	 * 通过学号查询所有数据(暂时不用)
 	 * 
 	 * @param sno
 	 *            学号主键

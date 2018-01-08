@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lzlz.student.record.entiy.Student;
 import com.lzlz.student.record.entiy.StudentTextbook;
 import com.lzlz.student.record.entiy.Teacher;
-import com.lzlz.student.record.entiy.Well;
 import com.lzlz.student.record.service.StudentService;
 import com.lzlz.student.record.service.StudentTextbookService;
 import com.lzlz.student.record.util.ExcelProcess;

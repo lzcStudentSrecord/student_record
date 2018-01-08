@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>模板</title>
+<title>教材费用确认列表</title>
 <!-- CSS -->
 <c:if test="${empty sessionScope.student}">
 	<script type="text/javascript">

@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>教材费插入</title>
-<title>职业资格证书确认</title>
+<title>教材费确认</title>
 <c:if test="${empty sessionScope.student}">
 	<script type="text/javascript">
 		alert("请先登录");

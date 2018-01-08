@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Blog</title>
+<title>问题详情</title>
 <meta name="description" content="Free Responsive Html5 Css3 Templates ">
 <meta name="author" content="#">
 <meta name="viewport"

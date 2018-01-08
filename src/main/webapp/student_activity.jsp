@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>模板</title>
+<title>活动申请</title>
 <!-- CSS -->
 <!-- CSS -->
 <c:if test="${empty sessionScope.student}">

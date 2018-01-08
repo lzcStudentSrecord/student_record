@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>模板</title>
+<title>教室申请模板</title>
 <link href="../resources/form-3/assets/css/fresh-bootstrap-table.css"
 	rel="stylesheet" />
 <link rel="stylesheet"

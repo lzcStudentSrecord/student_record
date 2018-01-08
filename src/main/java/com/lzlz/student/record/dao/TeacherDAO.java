@@ -8,7 +8,7 @@ import com.lzlz.student.record.entiy.Teacher;
 @Repository
 public interface TeacherDAO {
 	/**
-	 * 通过Teacher添加一条数据
+	 * 通过Teacher添加一条数据(暂时不用)
 	 * 
 	 * @param teacher
 	 *            关系映射的对象
@@ -26,7 +26,7 @@ public interface TeacherDAO {
 	public Teacher selectByTno(@Param("tno") long tno);
 
 	/**
-	 * 通过Teacher对象修改数据
+	 * 通过Teacher对象修改数据(暂时不用)
 	 * 
 	 * @param teacher
 	 *            关系映射的对象
@@ -35,7 +35,7 @@ public interface TeacherDAO {
 	public int updateByTeacher(@Param("teacher") Teacher teacher);
 
 	/**
-	 * 通过老师编号删除一条数据
+	 * 通过老师编号删除一条数据(暂时不用)
 	 * 
 	 * @param tno
 	 * @return 结果码

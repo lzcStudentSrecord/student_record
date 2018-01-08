@@ -28,7 +28,7 @@ public interface CriticismDAO {
 	public int insertByList(@Param("list") List<Criticism> list);
 
 	/**
-	 * 通过Criticism对象修改数据
+	 * 通过Criticism对象修改数据(暂时不用)
 	 * 
 	 * @param criticism
 	 *            关系映射的对象
@@ -55,7 +55,7 @@ public interface CriticismDAO {
 	public List<Criticism> selectByTno(@Param("tno") long tno);
 
 	/**
-	 * 通过记录编号查询一条记录
+	 * 通过记录编号查询一条记录(暂时不用)
 	 * 
 	 * @param crid
 	 *            记录编号

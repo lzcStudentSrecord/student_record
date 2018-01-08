@@ -46,7 +46,7 @@ public interface ProfessCertificateDAO {
 	public int deleteByPcid(@Param("pcid") long pcid);
 
 	/**
-	 * 通过学生编号查询所有的数据
+	 * 通过学生编号查询所有的数据(暂时不用)
 	 * 
 	 * @param sno
 	 *            学生编号
@@ -54,7 +54,14 @@ public interface ProfessCertificateDAO {
 	 */
 	public List<ProfessCertificate> selectBySnoWithAll(@Param("sno") long sno);
 
+	/**
+	 * 通过老师编号查询已经通过的职业证书
+	 * 
+	 * @param tno
+	 * @return
+	 */
 	public List<ProfessCertificate> selectByTnoWithHadPass(@Param("tno") long tno);
+
 	/**
 	 * 通过老师编号查询所有未申请通过的数据
 	 * 

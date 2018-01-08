@@ -10,17 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.lzlz.student.record.entiy.ProfessCertificate;
 import com.lzlz.student.record.entiy.Student;
 import com.lzlz.student.record.entiy.Teacher;
-import com.lzlz.student.record.entiy.Well;
 import com.lzlz.student.record.service.ProfessCertificateService;
 import com.lzlz.student.record.service.StudentService;
-import com.lzlz.student.record.util.ExcelProcess;
-
 @Controller
 @RequestMapping("/ProfessCertificate")
 public class ProfessCertificateController {

@@ -6,7 +6,6 @@ import java.util.Date;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 public class CustomerUtil {
 	/**

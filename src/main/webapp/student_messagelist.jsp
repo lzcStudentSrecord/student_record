@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>模板</title>
+<title>消息列表</title>
 <!-- CSS -->
 <c:if test="${empty student }">
 	<script type="text/javascript">

@@ -28,7 +28,7 @@ public interface WellDAO {
 	public int insertByList(@Param("list") List<Well> list);
 
 	/**
-	 * 通过学号查询数据
+	 * 通过学号查询数据(暂时不用)
 	 * 
 	 * @param sno
 	 *            学号
@@ -46,7 +46,7 @@ public interface WellDAO {
 	public List<Well> selectByTno(@Param("tno") long tno);
 
 	/**
-	 * 通过编号查询一条数据
+	 * 通过编号查询一条数据(暂时不用)
 	 * 
 	 * @param weid
 	 *            编号

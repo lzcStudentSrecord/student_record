@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>- -</title>
+<title>主页</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -17,12 +17,6 @@
 <script src="../resources/form-3/js/jquery1111.min.js"
 	type="text/javascript"></script>
 <script src="../resources/form-3/js/script.js"></script>
-
-
-
-
-
-
 <link rel="stylesheet" type="text/css"
 	href="../resources/form-3/css/component.css" />
 <link rel="stylesheet" type="text/css"

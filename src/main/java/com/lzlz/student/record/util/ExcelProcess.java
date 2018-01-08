@@ -19,7 +19,6 @@ import com.lzlz.student.record.entiy.Well;
 import com.lzlz.student.record.service.CreditService;
 import com.lzlz.student.record.service.CriticismService;
 import com.lzlz.student.record.service.GeneralCertificateService;
-import com.lzlz.student.record.service.ProfessCertificateService;
 import com.lzlz.student.record.service.StudentService;
 import com.lzlz.student.record.service.StudentTextbookService;
 import com.lzlz.student.record.service.WellService;
