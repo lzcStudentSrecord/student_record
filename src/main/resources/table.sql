@@ -102,6 +102,7 @@ state enum('未确认','已确认') default '未确认'-- 确认状态
 );
 -- 调课
 create table adjustlesson(
+alno bigint primary key auto_increment,
 tno bigint not null,-- 任课教师
 reason varchar(255) not null,-- 调课原因
 course varchar(100) not null,-- 课程名称

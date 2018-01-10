@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.lzlz.student.record.dao.AdjustLessonDAO">
 	<insert id="insertByAdjustLesson" parameterType="AdjustLesson">
 		INSERT
@@ -13,16 +14,19 @@
 		);
 	</insert>
 	<select id="selectAllBySno" resultType="AdjustLesson">
-		SELECT * FROM adjustlesson WHERE #{sno}=(SELECT sno From Student WHERE tfrom=(
-				SELECT tfrom FROM teacher WHERE teacher.tno=adjustlesson.tno
-			)
+		SELECT * FROM
+		adjustlesson WHERE #{sno}=(SELECT sno From Student WHERE tfrom=(
+		SELECT tfrom FROM teacher WHERE teacher.tno=adjustlesson.tno
+		)
 		);
 	</select>
 	<select id="selectAll" resultType="AdjustLesson">
-		SELECT * FROM adjustlesson order by alno asc;
+		SELECT * FROM adjustlesson
+		order by alno asc;
 	</select>
-	
+
 	<select id="selectByAlno" resultType="AdjustLesson">
-		SELECT * FROM adjustlesson where alno=#{alno} order by alno asc;
+		SELECT * FROM adjustlesson
+		where alno=#{alno} order by alno asc;
 	</select>
 </mapper>

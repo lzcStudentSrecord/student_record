@@ -196,7 +196,7 @@ p {
 			<!--老师功能-->
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-				href="Student/adjustList?curpage=1">首页</a></li>
+				href="/Student/adjustList?curpage=1">首页</a></li>
 			<c:if test="${!empty teacher }">
 				<hr>
 				<li style="text-align: center"><a style="color: aliceblue"

@@ -40,9 +40,9 @@ public class ActivityController {
 		activity.setAstate("未通过");
 		int ret = activityService.insertByActivity(activity);
 		if (ret != 0)
-			request.setAttribute("ret", 7);
+			request.setAttribute("ret", 6);
 		else
-			request.setAttribute("ret", 8);
+			request.setAttribute("ret", 7);
 		return "retprocess";
 	}
 

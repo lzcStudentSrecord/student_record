@@ -47,10 +47,12 @@ public class TeacherController {
 		Teacher teacher = teacherService.selectByTno(Long.parseLong(username));
 		if (teacher == null) {
 			request.setAttribute("ret", 1);
+			request.setAttribute("result", 2);
 			return "retprocess";
 		}
 		if (!teacher.getTpassword().equals(password)) {
 			request.setAttribute("ret", 2);
+			request.setAttribute("result", 2);
 			return "retprocess";
 		}
 		session.setAttribute("student", null);

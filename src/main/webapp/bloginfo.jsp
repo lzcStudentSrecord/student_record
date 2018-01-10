@@ -391,6 +391,7 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 			</div>
 		</div>
 		<!-- 分页 -->
+		<div style="margin-left: 600px">
 		<c:choose>
 			<c:when test="${curpage-1 <= 0 }"> 
  					上一页
@@ -408,6 +409,7 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 				<a href="/Posts/selectByPid?pid=${log.pid }&curpage=${curpage+1 }">下一页</a>
 			</c:otherwise>
 		</c:choose>
+		</div>
 	</div>
 	<script src="/resources/owl-carousel/owl.carousel.js"></script>
 	<script>

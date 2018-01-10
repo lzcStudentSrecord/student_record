@@ -215,7 +215,7 @@ p {
 		<ul id="lia" style="margin-top: 120px">
 		<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-					href="Student/adjustList?curpage=1">首页</a></li>
+					href="/Student/adjustList?curpage=1">首页</a></li>
 			<!--老师功能-->
 			<c:if test="${!empty teacher }">
 				<hr>

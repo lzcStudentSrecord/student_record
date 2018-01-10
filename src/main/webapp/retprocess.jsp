@@ -15,23 +15,27 @@
 	<c:when test="${ret eq 1 }">
 		<script type="text/javascript">
 			alert("用户名不存在");
-			<c:if test="${!empty sessionScope.teacher}">
-			location = "../student_login.jsp";
-			</c:if>
-			<c:if test="${!empty sessionScope.student}">
+			<c:choose>
+			<c:when test="${result eq 1 }">
+			location="../student_login.jsp";
+			</c:when>
+			<c:otherwise>
 			location="../teacher_login.jsp";
-			</c:if>
+			</c:otherwise>
+			</c:choose>
 		</script>
 	</c:when>
 	<c:when test="${ret eq 2 }">
 		<script type="text/javascript">
 			alert("密码错误");
-			<c:if test="${!empty sessionScope.teacher}">
+			<c:choose>
+			<c:when test="${result eq 1 }">
 			location="../student_login.jsp";
-			</c:if>
-			<c:if test="${!empty sessionScope.student}">
+			</c:when>
+			<c:otherwise>
 			location="../teacher_login.jsp";
-			</c:if>
+			</c:otherwise>
+			</c:choose>
 		</script>
 	</c:when>
 	<c:when test="${ret eq 3 }">

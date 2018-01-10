@@ -221,7 +221,7 @@ p {
 			<!--老师功能-->
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
-					href="Student/adjustList?curpage=1">首页</a></li>
+					href="/Student/adjustList?curpage=1">首页</a></li>
 			<c:if test="${!empty teacher }">
 			<hr>
 			<li style="text-align: center"><a style="color: aliceblue"
@@ -311,7 +311,7 @@ p {
 				<br>
 				<h3 style="text-align: left; margin-left: 25%; color: #000;"> <strong>活动作用</strong><br>
 				<textarea name="aaffect" class="bootstrap-frm1" readonly="readonly">${activityupdate.aaffect }</textarea></h3>
-				<br> <input class="bootstrap-frm2" type="submit"> <br>
+				<br> <input class="bootstrap-frm2" type="submit" value="确认"> <br>
 			</form>
 		</div>
 	</div>

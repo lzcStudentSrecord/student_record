@@ -66,10 +66,12 @@ public class StudentController {
 		Student student = studentService.getStudentBySno(Long.parseLong(username));
 		if (student == null) {
 			request.setAttribute("ret", 1);
+			request.setAttribute("result", 1);
 			return "retprocess";
 		}
 		if (!(username.equals(password))) {
 			request.setAttribute("ret", 2);
+			request.setAttribute("result", 1);
 			return "retprocess";
 		}
 		session.setAttribute("teacher", null);
