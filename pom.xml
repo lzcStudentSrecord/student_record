@@ -207,7 +207,7 @@
 
 	<!-- 构建插件 -->
 	<build>
-		<finalName>Study</finalName>
+		<finalName>student_record</finalName>
 		<plugins>
 			<!-- 生成war包，忽略提醒failOnMissingWebXml -->
 			<plugin>

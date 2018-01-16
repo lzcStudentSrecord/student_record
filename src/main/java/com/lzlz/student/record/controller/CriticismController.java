@@ -39,7 +39,6 @@ public class CriticismController {
 	@RequestMapping(value = "/insertByList", method = RequestMethod.POST)
 	public String insertByList(@RequestParam("excel") MultipartFile file, HttpServletRequest request)
 			throws IOException {
-		System.out.println("---------");
 		String oldname = file.getOriginalFilename();
 		if (!oldname.substring(oldname.indexOf('.')).equalsIgnoreCase(".xls")) {
 			request.setAttribute("ret", 14);
