@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lzlz.student.record.entiy._Class;
 import com.lzlz.student.record.service._ClassService;
 
-@Controller 
+@Controller  
 @RequestMapping("/_Class")
 public class _ClassController {
 	private _ClassService _classService;
